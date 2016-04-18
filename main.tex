@@ -37,7 +37,7 @@ where \(\nu_0\) denotes a smooth choice of unit normal vector field along \(M_0\
 From Gauss' lemma, we may write the metric as
 \[
 \bar{g} = \bar{g}_r + dr^2
-\]x
+\]
 where \(\bar{g}_r\) is smooth one-parameter family of metrics on \(M_0\). The prototypical examples here are the spaces of constant curvature \(c \in \R\) where,
 \[
 \bar{g}_r = s_c (r) \bar{g}_0
@@ -51,9 +51,63 @@ r, & c = 0 \\
 \end{cases}
 \]
 
-\textbf{best get the $c$ dependence right - maybe not square roots here?}
+\textbf{best get the \(c\) dependence right - maybe not square roots here?}
 
-In general, the metric \(\bar{g}_r\) 
+In general, the metric \(\bar{g}_r\) are not conformal and this adds some complication, but in the end Jacobi field estimates should be applied to compare \(\bar{g}_r\) with the constant curvature model, subject to a Ricci curvature bound. Presumably this will be of the form
+\[
+\ric \geq c_0 g
+\]
+with \(c_0 > 0\) and we will compare with the sphere.
+
+We now consider graphs over \(M_0\). By a \emph{smooth, one parameter family of graphs} we mean a smooth map
+\begin{align*}
+F : M_0 \times I &\to M_0 \times (-\epsilon, \epsilon) \\
+(x, t) &\mapsto (x, f(x, t))
+\end{align*}
+for \(f : M_0 \times I \to \R\) a smooth function and \(I \subset \R\) an interval. For convenience we will write,
+\[
+F_t (\cdot) = F(\cdot, t), \quad f_t(\cdot) = f(\cdot, t), \quad M_t = F_t(M_0).
+\]
+
+Our graphs should evolve by a curvature flow,
+\[
+\partial_t F = -\phi(\mathcal{W}_t) \nu_t
+\]
+where \(\phi\) is a smooth function defined on the fibre, sub-bundle of \(T^{\ast} M \otimes TM\) consisting of diagonalisable endomorphisms of \(TM\) with non-negative eigenvalues, \(\nu_t\) denotes a smooth choice of unit normal along \(M_t\) and \(\mathcal{W}_t\) denotes the Weingarten map with respect to \(\nu_t\). Equivalently, one may think of \(\phi\) as a smooth, symmetric function on the closed, positive cone \(\bar{\Gamma^+} \subset \R^n\) evaluated at the eigenvalues \((\kappa_1,\cdots, \kappa_n)\) of \(\mathcal{W}_t\).
+
+We want to write the evolution equation in terms of \(f_t\). The time variation is very simple,
+\[
+\frac{\partial F}{\partial t} = F_{\ast} \partial_t = \partial_t f \partial_r.
+\]
+
+For the spatial side of things, first the differential is,
+\[
+dF_t \cdot X = X + X(f) \partial_r \in T(M_0 \times (-\epsilon, \epsilon))
+\]
+for \(X \in TM_0\). And so the pull-back metric is
+\[
+g_t = \bar{g}_t + df_t \otimes df_t
+\]
+where \(\bar{g}_t\) denotes the metric \(\bar{g}_r\) on \(M_0\) evaluated at \(r = f_t\).
+
+The unit normal is obtained from the relation,
+\[
+\bar{g} (dF_t \cdot X, \nu_t) = 0
+\]
+for any \(X \in TM_0\). This yields,
+\[
+\nu_t = \frac{1}{\sqrt{1 + |\grad_t f_t|_t^2}} \left(\partial_r - \grad_t f_t\right)
+\]
+where \(\grad_t f_t\) denotes the gradient of \(f_t\) with respect to the metric \(\bar{g}_t\) on \(M_0\), and \(|\grad_t f_t|_t\) denotes the norm of \(\grad_t f_t\) with respect to \(\bar{g}_t\).
+
+The second fundamental form may be computed from,
+\begin{align*}
+A_t (X, Y) &= \bar{g} (\bar{\nabla}_{dF_t \cdot X} dF_t \cdot Y, \nu_t) \\
+&= \frac{1}{\sqrt{1 + |\grad_t f_t|_t^2}} \left[\bar{g}(\bar{\nabla}_X Y, \partial_r - \grad_t f_t) + \bar{g}(\bar{\nabla}_X (Y(f_t) \partial_r), \partial_r - \grad_t f_t)\right. \\
+&\quad + \left.X(f_t) \bar{g} (\bar{\nabla}_{\partial_r} (Y + Y(f_t) \partial_r), \partial_r - \grad_t f_t)\right].
+\end{align*}
+
+\textbf{Maybe it's better to compute Weingarten, or compute some Christoffel symbols here}.
 
 \section{Linearising Immersions}
 \label{sec:linearising_immersions}
