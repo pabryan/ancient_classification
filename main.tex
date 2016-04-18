@@ -1,0 +1,96 @@
+\documentclass{amsart}
+
+\input{StandardPaper2.tex}
+%\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\begin{document}
+
+\title[Ancient Solutions]
+ {Ancient Solutions in Riemannian Backgrounds}
+
+\curraddr{}
+\email{}
+\date{\today}
+
+\dedicatory{}
+\subjclass[2010]{}
+\keywords{}
+
+\begin{abstract}
+\end{abstract}
+
+\maketitle
+
+\section{Overview}
+\label{sec:overview}
+
+It was conjectured in \cite{IvakiBryan} that for the mean curvature flow in a positively curved, compact background, a convex, ancient solution converges backwards in time to a totally geodesic hypersurface, and there exists at most one non-trivial convex ancient solution emanating from this totally geodesic hypersurface. One line of reasoning that is likely to lead to a proof is that if an ancient solution actually has a smooth limit (this may be shown by means of a Harnack inequality; see \cite{IvakiBryan} in the case $N=\mathbb{S}^n$), then one can linearize the flow at this limit and use some version of the theory of invariant manifolds to conclude that the ancient solution lies on the unstable manifold of its limit as $t\to-\infty$ \cite[Chapters 8, 9]{lunardi2012analytic}. In fact, since the solution is assumed to be convex, its motion is monotone, and it would have to lie on the fast, unstable manifold corresponding to the principal eigenvalue and eigenfunction of the linearization. Since the principal eigenvalue is always simple, this fast, unstable manifold is one-dimensional, so there is only one such orbit. The fast, unstable manifold theorem guarantees existence and uniqueness of the ancient solution emanating from any given unstable minimal hypersurface. The uniqueness of the fast, unstable manifold also implies that the corresponding ancient solution inherits any symmetry that its limit at $t=-\infty$ may have. In the context of nonlinear heat equations, the stable and unstable manifold theory has been developed by Escher, Pr\"{u}ss, Simonett, and others (e.g., see \cite{pruess2012invariant}). It was used for Ricci flow by Gunther, Isenberg, and Knopf, e.g., \cite{guenther2002stability}. Application to mean curvature flow should be easier since the latter flow can be written as a classical quasi-linear PDE in any tubular neighborhood over the limiting hypersurface at $t=-\infty$.
+
+\section{Linearising Graphs}
+\label{sec:linearising_graphs}
+
+Let us fix a closed hypersurface \(M_0 \subset (\bar{M}, \bar{g})\) in a Riemannian manifold. Around \(M_0\), \(\bar{M}\) splits as a product via:
+\[
+(x, r) \in M_0 \times (-\epsilon, \epsilon) \mapsto \exp_x(r \nu_0(x))
+\]
+where \(\nu_0\) denotes a smooth choice of unit normal vector field along \(M_0\) and \(\exp\) denotes the exponential map of \((\bar{M}, \bar{g})\).
+
+From Gauss' lemma, we may write the metric as
+\[
+\bar{g} = \bar{g}_r + dr^2
+\]x
+where \(\bar{g}_r\) is smooth one-parameter family of metrics on \(M_0\). The prototypical examples here are the spaces of constant curvature \(c \in \R\) where,
+\[
+\bar{g}_r = s_c (r) \bar{g}_0
+\]
+where \(M_0\) is a geodesic sphere of appropriate radius (\(\pi/2\) for spheres), and
+\[
+s_c(t) = \begin{cases}
+\frac{1}{\sqrt{c}} \sin(\sqrt{c} r), & c > 0 \\
+r, & c = 0 \\
+\frac{1}{\sqrt{|c|}} \sinh(\sqrt{|c|} r), & c < 0.
+\end{cases}
+\]
+
+\textbf{best get the $c$ dependence right - maybe not square roots here?}
+
+In general, the metric \(\bar{g}_r\) 
+
+\section{Linearising Immersions}
+\label{sec:linearising_immersions}
+
+The typical approach here seems to be as follows: Let \(M \subset \bar{M}\) be a hypersurface (what about higher co-dimension?) and consider graphs
+\[
+M_f = \{\exp_x(f(x)\nu(x) : x \in M\}
+\]
+where the exponential map is the ambient exponential map. Now the center manifold is a sub-manifold of \(C^{\infty}(M, \R)\) - or perhaps rather on some suitable, less-regular space such as little H\"older spaces. Little H\"older norms and so forth are defined on this space and \(M\) corresponds to the zero graph.
+
+Suppose instead we took the parametric approach. Let
+\[
+F_0 : M \to \bar{M}
+\]
+be an immersion. Replace \(C^{\infty}(M, \R)\) with \(C^{\infty} (M, \bar{M})\). The \(C^0\) topology is induced by Haussdorf distance - we have a sort of a norm here
+\[
+|F(x)| = d(F_0(x), F(x)).
+\]
+It's not a norm because we can't add $F_1 + F_2$. Is this a major issue?
+
+We do have norms on higher derivatives,
+\[
+|\nabla^k F (x)| = |\nabla^k F(x) - \nabla^k F_0(x)|
+\]
+Does this make sense? What exactly do I mean by \(\nabla^k\)? 
+
+We can integrate and so forth to obtain \(L^p\) norms, including \(L^{\infty}\). Not sure about H\"older norms. 
+
+I see now what I'm doing. This makes sense in the context of uniform spaces. This is the same as for Nash-Moser Theorem. I can't remember my history now, but I recall the idea there is similar that you're not working with a vector space but the required technical tools such as inverse function theorem carry over to this setting. See Hamilton's paper on this for details (if I recall correctly). Is this too much machinery just to avoid working with graphs? I'm always suspicious of graphs as being too restrictive.
+
+The upshot is I would like to know if the general theory on \(C^{\infty}(M, \R)\) (or whatever appropriate weaker function space) may be carried over to maps \(F : M \to \bar{M}\) instead. this includes the graph case by
+\[
+F(x) = \exp_{F_0(x)} (f(x) \nu_0(x)).
+\]
+
+There are plenty of good functional properties of these uniform spaces and I think a lot of the required functional analysis carries over to this setting. Perhaps this approach is for another day though when I have the energy to work it all out. Especially since \(F\) being \(C^1\) close to \(F_0\) is any reasonable sense probably means that \(F\) can be written as a graph over \(F_0\) as above anyway!
+
+\bibliographystyle{amsplain}
+\bibliography{Bibliography.bib}
+\end{document}
