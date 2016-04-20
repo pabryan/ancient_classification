@@ -25,6 +25,20 @@
 
 It was conjectured in \cite{IvakiBryan} that for the mean curvature flow in a positively curved, compact background, a convex, ancient solution converges backwards in time to a totally geodesic hypersurface, and there exists at most one non-trivial convex ancient solution emanating from this totally geodesic hypersurface. One line of reasoning that is likely to lead to a proof is that if an ancient solution actually has a smooth limit (this may be shown by means of a Harnack inequality; see \cite{IvakiBryan} in the case $N=\mathbb{S}^n$), then one can linearize the flow at this limit and use some version of the theory of invariant manifolds to conclude that the ancient solution lies on the unstable manifold of its limit as $t\to-\infty$ \cite[Chapters 8, 9]{lunardi2012analytic}. In fact, since the solution is assumed to be convex, its motion is monotone, and it would have to lie on the fast, unstable manifold corresponding to the principal eigenvalue and eigenfunction of the linearization. Since the principal eigenvalue is always simple, this fast, unstable manifold is one-dimensional, so there is only one such orbit. The fast, unstable manifold theorem guarantees existence and uniqueness of the ancient solution emanating from any given unstable minimal hypersurface. The uniqueness of the fast, unstable manifold also implies that the corresponding ancient solution inherits any symmetry that its limit at $t=-\infty$ may have. In the context of nonlinear heat equations, the stable and unstable manifold theory has been developed by Escher, Pr\"{u}ss, Simonett, and others (e.g., see \cite{pruess2012invariant}). It was used for Ricci flow by Gunther, Isenberg, and Knopf, e.g., \cite{guenther2002stability}. Application to mean curvature flow should be easier since the latter flow can be written as a classical quasi-linear PDE in any tubular neighborhood over the limiting hypersurface at $t=-\infty$.
 
+\section{Mean Cuvature Flow on The Sphere}
+\label{sec:mcf_sphere}
+
+A straightforward computation yields the following representation of the Weingarten map in terms of the function $u,$ namely
+\[
+\label{graph h}h^i_j = \frac{v\vt'}{\vt} \delta^i_j + \frac{v^3\vt'}{\vt^3} \nabla^i u \nabla_j u - v g^{ik} \nabla^2_{kj}u,
+\]
+where $v = \partial_r \cdot \nu.$ Covariant derivatives as well as index raising are performed with respect to $\s_{ij};$ see, for example, \cite[(3.32)]{Scheuer:05/2015}.
+
+Thus the Mean Curvature flow of a graph over the equator is
+\[
+\partial_t u = n \fr{\vt'}{v\vt}+ \fr{\vt'}{v^3\vt^3}\nabla^iu\nabla_iu - \fr{g^{ik}}{v}\nabla^2_{ki}u
+\]
+
 \section{Linearising Graphs}
 \label{sec:linearising_graphs}
 
