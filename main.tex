@@ -52,14 +52,78 @@ Let us also define the operator
 \Box u = F^{ij} \nabla^2_{ij} u.
 \]
 
-Then arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation,
+Then arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
 \begin{equation}
 \label{eq:linearisation}
-L u = \Box u + \overline{\ric}_{\dot{F}}(\nu_0, \nu_0) u + |\mathcal{W}|^2 u.
+L u = \Box u + \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|^2\right) u
 \end{equation}
+where derivatives and norms are computed with respect to the metric \(g_0 = F_0^{\ast} \bar{g}\) induced on \(F(M_0)\) and Levi-Civita connection \(\nabla_0\). For convenience, let set
+\[
+V = \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|^2\right)
+\]
+for the potential.
 
-\textbf{I'm not entirely clear on which metric we are working with respect to here. It seems to be the metric on \(M_0\). Is that correct?}
 
+We have a basic theorem regarding the spectrum \(\sigma = \sigma(L)\) of \(L\). Let us define,
+\[
+\sigma_{\pm} (L) = \{\lambda \in \sigma(L) : \pm \text{Re}(\lambda) > 0\}
+\]
+and
+\begin{align*}
+\omega_+ &= \inf \{\text{Re} \lamda : \lambda \in \sigma_+\} \\
+- \omega_- &= \sup \{\text{Re} \lamda : \lambda \in \sigma_-\}.
+\end{align*}
+
+\begin{theorem}
+Suppose \(L\) may be written in divergence form,
+\[
+L u = \div\left[\left(F^{ij} \nabla_j u + u X^i\right)\partial_i\right] - g(X, \nabla u) + c u.
+\]
+Then the eigenvalues of \(L\) are real, and the principal eigenvalue \(\lambda_1\) is simple.
+\end{theorem}
+
+The proof is standard, such as in \cite[Theorems 8.37,8.38]{GilbargTrudinger:/2001}.
+
+\begin{remark}
+We should be able to do better than above. I think probably for the divergence part, we really only need something for which Stoke's theorem may be applied. Might be worth looking into some more to see which operators satisfy this requirement. But it does seem rather restrictive - though the results to pertain to the Mean Curvature Flow at least.
+\end{remark}
+
+\begin{remark}
+But more importantly, can we obtain the same results for potentials that are semi-concave (\(V(x)\) has bounded below second derivative). Is semi-concavity important, or do we just need bounded potential \(V\)? See for example \cite[Theorem 6.5.3]{Evans:/1998} which applies to operators of our form, but with \emph{negative} potential (note that Evans takes the convention of e.g. \(L = -\Delta + V\) with \(V \geq 0\) and after multiplying by \(-1\) we get \(L = \Delta - V\)). Our potentials are positive, but is there a trick that allows us to add something to \(u\) or multiply by \(u\) by something to obtain a new equation with \(V \leq 0\)? Then we may apply \cite[Theorem 6.5.3]{Evans:/1998} to discover that the principal eigenvalue is real and simple. The main point about the sign on \(V\) seems to be in showing that if \(Lu = f\) for \(f \geq 0\), then the strong maximum principle applies to show that \(u > 0\).
+
+It appears as though the relevant result goes by the name of the Krein-Rutman theorem. See for example \cite[Appendix C, Chapter 11]{smoller:/1983}. An example is given where the theorem is applied, but again it only applies to negative potentials!
+\end{remark}
+
+If some version of the remark above is true, the resulting theorem would then become,
+\begin{theorem}[Provisional Theorem]
+Let \(L u = \Box u + V u\) with \(V\) having bounded below second derivative (or perhaps just bounded \(V\)?). Then the principal eigenvalue \(\lambda_1\) is real and simple. That is, there exists a real eigenvalue \(\lambda_1\) for which all other eigenvalues \(\lambda \in \C\) satisfy,
+\[
+\text{Re} \lambda \leq \lambda_1,
+\]
+and the eigenspace associated to \(\lamda_1\) is one-dimensional.
+\end{theorem}
+
+Next, we have some theorems regarding the linear stability of fixed points of the flow. Let \(M_{-\infty} = F_{-\infty}(M)\) denote a fixed point of the flow.
+
+\begin{theorem}
+Assume that if \(\sigma_+ \ne \empyset\), then \(\omega_+ > 0\). Then the flow admits a non-static ancient solution \(M_t\) with \(M_t \to M_{-\infty}\) (in some appropriate topology, at least something like \(h^{1+\alpha}\) - just anything better than \(C^1\) probably) if and only if
+\[
+\sup \{\text{Re}\lambda \in \sigma(L)\} > 0.
+\]
+Moreover if there is a unique eigenvalue \(\lambda\) such that \(\text{Re}(\lambda) > 0\), then \(M_t\) is unique.
+\end{theorem}
+
+\begin{remark}
+In the proof that follows we need to use that solutions close to \(M_{-\infty}\) are contained in the centre manifold. What conditions are required here? Also, some further assumption like \(\sigma \cap i\R = \emptyset\) (which follows from \(\omega_+ > 0\)) is also necessary for the statement here, but the results in \cite[Section 9.2]{lunardi2012analytic} might be used for the so-called critical case of stability. Or perhaps all that is needed is the saddle-point property of 9.1.2.
+\end{remark}
+
+\begin{proof}
+\cite[Theorem 9.1.3]{lunardi2012analytic} asserts that if \(\sup \{\text{Re}\lambda \in \sigma(L)\} > 0\), and \(\omega_+ > 0\) then there exists a non-static ancient solution with \(M_t \to M_{-\infty}\).
+
+On the other hand, if such a solution exists, then there is \(t_0 < 0\) such that \(M_t\) lies in the unstable-centre manifold for \(t \leq t_0\) (is this \cite[Theorem 9.1.4]{lunardi2012analytic}?). But if \(\sigma_+ = \emptyset\), then \(M_{-\infty}\) is linearly stable which implies in particular that for any neighbourhood, since there is a \(t_0\) such \(M_t\) lies in this neighbourhood for \(t \leq t_0\), it remains in this neighbourhood for all \(t \geq t_0\). Thus \(M_t\) lies in every neighbourhood of \(M_{-\infty}\) and hence \(M_t = M_{-\infty}\) for all \(t\) - a contradiction (this can probably be rephrased without a contradiction argument).
+
+Finally, if \(\lambda_1\) is the unique eigenvalue with positive real part, then any ancient solution \(M_t\) limiting back to \(M_{-\infty}\) cannot lie in the null part of the centre manifold (since these are stationary points). Hence \(M_t\) lies in the eigenspace corresponding to \(\lambda_1\) which is one-dimensional by the theorems above about the principal eigenvalue being simple. Thus \(M_t\) is unique.
+\end{proof}
 
 \section{Linearising Immersions}
 \label{sec:linearising_immersions}
