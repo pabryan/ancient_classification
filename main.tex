@@ -23,12 +23,12 @@
 \section{Overview}
 \label{sec:overview}
 
-It was conjectured in \cite{IvakiBryan} that for the mean curvature flow in a positively curved, compact background, a convex, ancient solution converges backwards in time to a totally geodesic hypersurface, and there exists at most one non-trivial convex ancient solution emanating from this totally geodesic hypersurface. One line of reasoning that is likely to lead to a proof is that if an ancient solution actually has a smooth limit (this may be shown by means of a Harnack inequality; see \cite{IvakiBryan} in the case $N=\mathbb{S}^n$), then one can linearize the flow at this limit and use some version of the theory of invariant manifolds to conclude that the ancient solution lies on the unstable manifold of its limit as $t\to-\infty$ \cite[Chapters 8, 9]{lunardi2012analytic}. In fact, since the solution is assumed to be convex, its motion is monotone, and it would have to lie on the fast, unstable manifold corresponding to the principal eigenvalue and eigenfunction of the linearization. Since the principal eigenvalue is always simple, this fast, unstable manifold is one-dimensional, so there is only one such orbit. The fast, unstable manifold theorem guarantees existence and uniqueness of the ancient solution emanating from any given unstable minimal hypersurface. The uniqueness of the fast, unstable manifold also implies that the corresponding ancient solution inherits any symmetry that its limit at $t=-\infty$ may have. In the context of nonlinear heat equations, the stable and unstable manifold theory has been developed by Escher, Pr\"{u}ss, Simonett, and others (e.g., see \cite{pruess2012invariant}). It was used for Ricci flow by Gunther, Isenberg, and Knopf, e.g., \cite{guenther2002stability}. Application to mean curvature flow should be easier since the latter flow can be written as a classical quasi-linear PDE in any tubular neighborhood over the limiting hypersurface at $t=-\infty$.
+It was conjectured in \cite{IvakiBryan} that for the mean curvature flow in a positively curved, compact background, a convex, ancient solution converges backwards in time to a totally geodesic hypersurface, and there exists at most one non-trivial convex ancient solution emanating from this totally geodesic hypersurface. One line of reasoning that is likely to lead to a proof is that if an ancient solution actually has a smooth limit (this may be shown by means of a Harnack inequality; see \cite{IvakiBryan} in the case $N=\mathbb{S}^n$), then one can linearize the flow at this limit and use some version of the theory of invariant manifolds to conclude that the ancient solution lies on the unstable manifold of its limit as $t\to-\infty$ \cite[Chapters 8, 9]{lunardi2012analytic}. In fact, since the solution is assumed to be convex, its motion is monotone, and it would have to lie on the unstable manifold corresponding to the principal eigenvalue and eigenfunction of the linearization. Since the principal eigenvalue is always simple, the unstable manifold is one-dimensional, so there is only one such orbit. The unstable manifold theorem guarantees existence and uniqueness of the ancient solution emanating from any given unstable minimal hypersurface. The uniqueness of the unstable manifold also implies that the corresponding ancient solution inherits any symmetry that its limit at $t=-\infty$ may have. In the context of nonlinear heat equations, the stable and unstable manifold theory has been developed by Escher, Pr\"{u}ss, Simonett, and others (e.g., see \cite{pruess2012invariant}). It was used for Ricci flow by Gunther, Isenberg, and Knopf, e.g., \cite{guenther2002stability}. Application to mean curvature flow should be easier since the latter flow can be written as a classical quasi-linear PDE in any tubular neighborhood over the limiting hypersurface at $t=-\infty$.
 
 \section{Linearising Graphs}
 \label{sec:linearising_graphs}
 
-The linearisation of the flow is given in \cite[Lemma 3.5]{Harltey:/2016}. Compared with the setting there, in our situation there is no weight function: \(\Xi = 0\) and the so the integral terms do not appear. Moreover, we do not assume that \(M_0\) is totally umbilic. Let us introduce a little notation, and rephrase the result of \cite[Lemma 3.5]{Harltey:/2016} in this notation.
+The linearisation of the flow is given in \cite[Lemma 3.5]{Harltey:/2016}. Compared with the setting there, in our situation there is no weight function: \(\Xi = 0\) and so the integral terms disappear. Moreover, we do not assume that \(M_0\) is totally umbilic. Let us introduce a little notation, and rephrase the result of \cite[Lemma 3.5]{Harltey:/2016} in this notation.
 
 The speed function, \(F: \Gamma(T^{\ast}M \otimes TM) \to C^{\infty}(M)\) may be thought of as a function \(F : \Gamma(T^{\ast} M \otimes T^{\ast}M) \times \Gamma(T^{\ast} \odot T^{\ast}M)_+ \to C^{\infty}(M)\) via
 \[
@@ -36,20 +36,20 @@ F(h, g) = F(\tr_g h)
 \]
 where \(\Gamma(T^{\ast} \odot T^{\ast}M)_+\) denotes the fibre bundle of positive-definite, symmetric bilinear forms. Writing
 \[
-\cdot{F}^{ij} = \partial_{h_{ij}} F = g^{ik} \partial_{h^j_k} F
+\dot{F}^{ij} = \partial_{h_{ij}} F = g^{ik} \partial_{h^j_k} F
 \]
 we obtain a positive definite (from the parabolicity condition), symmetric bi-linear form on \(T^{\ast}M\),
 \[
-B_{\cdot{F}} (\alpha, \beta) = \alpha_i \beta_j F^{ij}
+B_{\dot{F}} (\alpha, \beta) = \alpha_i \beta_j F^{ij}
 \]
 where \(\alpha = \alpha_i dx^i, \beta = \beta_i dx^i\). We can use \(B_{\dot{F}}\) to define musical isomorphisms and so raise and lower indices. In particular, denote by \(\ric_{\dot{F}}\) the trace of \(\rm\) with respect to \(B_{\dot{F}}\),
 \[
-(\ric_{\dot{F}})_{ij} = F^{kl} \riem_{kilj}.
+(\ric_{\dot{F}})_{ij} = \dot{F}^{kl} \riem_{kilj}.
 \]
 
 Let us also define the operator
 \[
-\Box u = F^{ij} \nabla^2_{ij} u.
+\Box u = \dot{F}^{ij} \nabla^2_{ij} u.
 \]
 
 Then arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
@@ -82,7 +82,7 @@ L u = \div\left[\left(F^{ij} \nabla_j u + u X^i\right)\partial_i\right] - g(X, \
 Then the eigenvalues of \(L\) are real, and the principal eigenvalue \(\lambda_1\) is simple.
 \end{thm}
 
-The proof is standard, such as in \cite[Theorems 8.37,8.38]{GilbargTrudinger:/2001}.
+The proof is standard, such as in \cite[Theorems 8.37, 8.38]{GilbargTrudinger:/2001}.
 
 \begin{rem}
 We should be able to do better than above. I think probably for the divergence part, we really only need something for which Stoke's theorem may be applied. Might be worth looking into some more to see which operators satisfy this requirement. But it does seem rather restrictive - though the results to pertain to the Mean Curvature Flow at least.
