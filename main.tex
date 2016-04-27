@@ -46,6 +46,14 @@ where \(\alpha = \alpha_i dx^i, \beta = \beta_i dx^i\). We can use \(B_{\dot{F}}
 \[
 (\ric_{\dot{F}})_{ij} = \dot{F}^{kl} \riem_{kilj}.
 \]
+We also have associated norms
+\[
+|\alpha|_{\dot{F}}^2 = B_{\cdot{F}}(\alpha, \alpha)
+\]
+which induces, in particular, a norm on endomorphisms \(T \in T^{\ast}M \otimes TM\)
+\[
+|T|_{\dot{F}}^2 = \dot{F}^{ij} g_{il} T^l_k T^k_j.
+\]
 
 Let us also define the operator
 \[
@@ -55,11 +63,11 @@ Let us also define the operator
 Then arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
 \begin{equation}
 \label{eq:linearisation}
-L u = \Box u + \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|^2\right) u
+L u = \Box u + \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right) u
 \end{equation}
-where derivatives and norms are computed with respect to the metric \(g_0 = F_0^{\ast} \bar{g}\) induced on \(F(M_0)\) and Levi-Civita connection \(\nabla_0\). For convenience, let set
+where derivatives and norms are computed with respect to the metric \(g_0 = X_0^{\ast} \bar{g}\) induced on \(M_0 = X_0(M)\), and Levi-Civita connection \(\nabla_0\). For convenience, let us set
 \[
-V = \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|^2\right)
+V = \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right)
 \]
 for the potential.
 
