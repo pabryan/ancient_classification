@@ -28,6 +28,9 @@ It was conjectured in \cite{IvakiBryan} that for the mean curvature flow in a po
 \section{Linearising Graphs}
 \label{sec:linearising_graphs}
 
+\subsection{The Linearisation}
+\label{subsec:linearisation}
+
 The linearisation of the flow is given in \cite[Lemma 3.5]{Harltey:/2016}. Compared with the setting there, in our situation there is no weight function: \(\Xi = 0\) and so the integral terms disappear. Moreover, we do not assume that \(M_0\) is totally umbilic. Let us introduce a little notation, and rephrase the result of \cite[Lemma 3.5]{Harltey:/2016} in this notation.
 
 The speed function, \(F: \Gamma(T^{\ast}M \otimes TM) \to C^{\infty}(M)\) may be thought of as a function \(F : \Gamma(T^{\ast} M \otimes T^{\ast}M) \times \Gamma(T^{\ast} \odot T^{\ast}M)_+ \to C^{\infty}(M)\) via
@@ -71,6 +74,24 @@ V = \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\ri
 \]
 for the potential.
 
+\begin{remark}
+In the case of the Mean Curvature Flow, \(\Box = \Delta), the Laplacian, \(\ric_{\cdot{F}} = \ric\), and \(|\mathcal{W}|_{\cdot{F}} = |\mathcal{W}|\). Thus we have
+\[
+L u = \Delta u + (\ric(\nu_0, \nu_0) + |\mathcal{W}|^2) u.
+\]
+Integrating by parts over \(M_0\), we have the bilinear form,
+\[
+B(u, v) = \int_{M_0} v Lu = \int_{M_0} -\inpr{\nabla u}{\nabla v} + V uv 
+\]
+and associated index form,
+\[
+I(u) = \int_{M_0} -|\nabla u|^2 + V u^2.
+\]
+In that particular case where \(V > 0\) on \(M_0\) (for example if \(\ric > 0\)), by choosing \(u \equiv u_0\) is constant, we obtain the existence of a function \(u\) with \(I(u) > 0\). Equivalently, there exists a \(u\) with \(I(u) > 0\) if and only if \(M_0\) is unstable. In the case of positive Ricci, this is the well known result that all minimal surfaces are unstable.
+\end{remark}
+
+\subsection{The Spectrum}
+\label{subsec:spectrum}
 
 We have a basic theorem regarding the spectrum \(\sigma = \sigma(L)\) of \(L\). Let us define,
 \[
@@ -100,6 +121,10 @@ We should be able to do better than above. I think probably for the divergence p
 But more importantly, can we obtain the same results for potentials that are semi-concave (\(V(x)\) has bounded below second derivative). Is semi-concavity important, or do we just need bounded potential \(V\)? See for example \cite[Theorem 6.5.3]{Evans:/1998} which applies to operators of our form, but with \emph{negative} potential (note that Evans takes the convention of e.g. \(L = -\Delta + V\) with \(V \geq 0\) and after multiplying by \(-1\) we get \(L = \Delta - V\)). Our potentials are positive, but is there a trick that allows us to add something to \(u\) or multiply by \(u\) by something to obtain a new equation with \(V \leq 0\)? Then we may apply \cite[Theorem 6.5.3]{Evans:/1998} to discover that the principal eigenvalue is real and simple. The main point about the sign on \(V\) seems to be in showing that if \(Lu = f\) for \(f \geq 0\), then the strong maximum principle applies to show that \(u > 0\).
 
 It appears as though the relevant result goes by the name of the Krein-Rutman theorem. See for example \cite[Appendix C, Chapter 11]{smoller:/1983}. An example is given where the theorem is applied, but again it only applies to negative potentials!
+
+Also, perturbation results in Kato imply that for self-adjoint top term, the addition of the potential does not disturb the fact that the eigenvalues are real and, countable and discrete accumulating at \(\infty\).
+
+These techniques might also be used, by semi-continuity of the spectrum, to show that other speeds close to the Laplacian also have such spectra. For general speeds \(F\), no such results will be available - you get complex eigenvalues, but some vestige may still remain.
 \end{rem}
 
 If some version of the remark above is true, the resulting theorem would then become,
@@ -111,14 +136,46 @@ Let \(L u = \Box u + V u\) with \(V\) having bounded below second derivative (or
 and the eigenspace associated to \(\lambda_1\) is one-dimensional.
 \end{thm}
 
-Next, we have some theorems regarding the linear stability of fixed points of the flow. Let \(M_{-\infty} = F_{-\infty}(M)\) denote a fixed point of the flow.
+
+\section{Minimal and Totally Geodesic Surfaces}
+\label{sec:minimal}
+
+\subsection{Existence and Morse Index}
+\label{subsec:existence_index}
+
+The results in \cite{pitts:/1976,pitts:/1981,pitts:1983,SchoenSimon:1981} show tat if \((\bar{M}, \bar{g})\) ensure that there exists closed, minimal hyper-surfaces in \(M\). The regularity theory (Almgran? best get some good refs here!) of minimal surfaces shows that \(M\) is smooth apart from a set of Hausdorff dimension \(\leq n-7\) (some of Pitts result have max dimension 5 or 6 - what's that all about?). In particular if \(\bar{M}\) has dimension no larger than six, there exists a smooth, closed minimal hyper-surface.
+
+A reference for the lack of such in negatively curved spaces would be handy here.
+
+\subsection{Totally Geodesic Hypersurfaces}
+\label{subsec:totally_geodesic}
+
+In symmetric spaces, a standard result says that if \((\bar{M}, \bar{g})\) is an irreducible, symmetric space then there exists a totally geodesic hypersurface \(M\) in \(\bar{M}\) if and only if \((\bar{M}, \bar{g})\) is a space-form (\cite{BenrdtOlmos:2014} mentions it, but a better ref?). Thus by the previous paragraph, the Harnack inequality cannot hold in an irreducible, symmetric space of non-constant curvature.
+
+There is also another interesting result \cite{BenrdtOlmos:2014} that says, again in the irreducible case, \(rk(\bar{M}, \bar{g}) \leq i(\bar{M}, \bar{g})\) where \(i\) denotes the least co-dimension for which a totally geodesic submanifold exists, and \(rk\) denotes the rank. This implies that for an irreducible, rank 2 or higher symmetric space, again no totally geodesic hypersurface exists. Not of course, that the result of the previous paragraph is much stronger and already implies the lack of a totally geodesic hypersurface. The two results combined imply that a rank at most one, irreducible, symmetric space that is not a space-form, then no totally geodesic hypersurfaces exist.
+
+Robert Bryant (\url{http://mathoverflow.net/questions/209618/existence-of-totally-geodesic-hypersurfaces}) notes that generically, totally geodesic hypersurfaces do not exist in Riemannian manifolds.
+
+\section{Harnack Inequality}
+\label{sec:harnack}
+
+
+\section{Ancient Solutions}
+\label{sec:ancient_solutions}
+
+\subsection{Smooth, Backwards Limits}
+\label{subsec:smooth_backwards_limits}
+
+\subsubsection{Existence of Ancient Solutions}
+\label{subsubsec:smooth_ancient_existence}
+
+Next, we have some theorems regarding the linear stability of fixed points of the flow. Let \(M_{-\infty} = F_{-\infty}(M)\) denote a smooth, fixed point of the flow.
 
 \begin{thm}
 The flow admits a non-static ancient solution \(M_t\) with \(M_t \to M_{-\infty}\) (in some appropriate topology, at least something like \(h^{1+\alpha}\) - just anything better than \(C^1\) probably) if and only if
 \[
 \sup \{\text{Re}\lambda \in \sigma(L)\} > 0.
 \]
-Moreover if there is a unique eigenvalue \(\lambda\) such that \(\text{Re}(\lambda) > 0\), \(M_t\) lies locally on side of \(M_0\) (i.e. is the normal graph of a function, either strictly positive or strictly negative) and is unique up to choice of side.
 \end{thm}
 
 \begin{rem}
@@ -130,12 +187,88 @@ In the proof that follows we need to use that solutions close to \(M_{-\infty}\)
 
 On the other hand, if such a solution exists, then there is \(t_0 < 0\) such that \(M_t\) lies in the unstable-centre manifold for \(t \leq t_0\) (is this \cite[Theorem 9.1.4]{lunardi2012analytic}?). But if \(\sigma_+ = \emptyset\), then \(M_{-\infty}\) is linearly stable which implies in particular that for any neighbourhood, since there is a \(t_0\) such \(M_t\) lies in this neighbourhood for \(t \leq t_0\), it remains in this neighbourhood for all \(t \geq t_0\). Thus \(M_t\) lies in every neighbourhood of \(M_{-\infty}\) and hence \(M_t = M_{-\infty}\) for all \(t\) - a contradiction (this can probably be rephrased without a contradiction argument).
 
-Finally, suppose \(\lambda_1\) is the unique eigenvalue with positive real part. Then \cite[Theorem 9.1.3]{lunardi2012analytic} assures us that there exists at least one non-static ancient solution \(z(t)\) limiting back to \(M_0\) (i.e. \(z \to 0\) as \(t \to -\infty\). Denote by \(P : X \to V_1\) the projection of our function space \(X\) onto the eigenspace associated to \(\lambda_1\) which is one-dimensional by the theorems above. Let \(z_0^+\) be any basis for \(V_1\) with \(z_0^+ > 0\) (by the theorems above about the first eigenfunction) and \(z_0^- < 0\) also a basis. Then in fact, the proof of \cite[Theorem 9.1.3]{lunardi2012analytic} assures us of at least two ancient solutions \(z^{\pm}\) limiting back to \(0\) with \(\pm z^{\pm} > 0\).
+\end{proof}
+
+\subsubsection{Uniqueness of Ancient Solutions}
+\label\label{subsubsec:smooth_ancient_uniqueness}
+
+\begin{thm}
+Suppose that there is a unique eigenvalue with \(\text{Re} \lambda_1 > 0\). Then, up to choosing a side of \(M_{-\infty}\), there exists a unique ancient solution converging backwards to \(M_{-\infty}\). 
+\end{thm}
+
+\begin{proof}
+\cite[Theorem 9.1.3]{lunardi2012analytic} assures us that there exists at least one non-static ancient solution \(z(t)\) limiting back to \(M_0\) (i.e. \(z \to 0\) as \(t \to -\infty\)). Denote by \(P : X \to V_1\) the projection of our function space \(X\) onto the eigenspace associated to \(\lambda_1\) which is one-dimensional by the theorems above. Let \(z_0^+\) be any basis for \(V_1\) with \(z_0^+ > 0\) (by the theorems above about the first eigenfunction) and \(z_0^- < 0\) also a basis. Then in fact, the proof of \cite[Theorem 9.1.3]{lunardi2012analytic} assures us of at least two ancient solutions \(z^{\pm}\) limiting back to \(0\) with \(\pm z^{\pm} > 0\).
 
 Write \(P z^{\pm}(t) = c(t) z_0^{\pm}\) with \(c \to 0\) as \(t \to -\infty\). Since \(0\) is a barrier for the flow and \(c(t) z_0^{\pm}\) is either strictly positive or strictly negative, we may assume \(c > 0\). Continuity then implies that \(c\) maps onto \((0, \epsilon)\) for some \(\epsilon > 0\).
 
 Thus if \(v(t)\) is any other ancient solution limiting back to \(0\), then there exists \(t_0,t_1\) with \(P v(t_0) = \pm d_0 z_0 = P z(t_1)\), \(0 < d_0 < \epsilon\) for either \(z_0 = z_0^+, z = z^+\) or \(z_0 = z_0^-, z = z^-\). Thus both \(z\) and \(y\) satisfy the same equation with the same projected initial conditions (up to time shift) and hence agree by the uniqueness as in the proof of \cite[Theorem 9.1.3]{lunardi2012analytic}.
 \end{proof}
+
+\begin{defn}
+Let us call a solution \(F\)-convex if \(F > 0\) along the flow.
+\end{defn}
+
+\begin{thm}
+Suppose
+\[
+\sup \{\text{Re}\lambda \in \sigma(L)\} > 0.
+\]
+Then, up to choosing a side, there exists a unique \(F\)-convex, ancient solution emanating from \(M_{-\infty}\).
+\end{thm}
+
+\begin{proof}
+If there is an \(F\)-convex, ancient solution, then \(F > 0\) implies that the flow is monotone. \textbf{Some argument is now required to show the flow lies in the eigenspace of the first eigenvalue}. The idea is to show that since the first eigenspace is simple and the eigenfunction is positive, this eigenspace is the most unstable. A monotone flow (which also has positive flow) must somehow lie in this eigenspace. Another approach would be to try show that the velocity vector field lies is a multiple of the first eigenfunction more directly.
+
+Conversely, corresponding to the first eigenvalue, there is a positive eigenfunction. The corresponding flow must then be monotone, hence is \(F\)-convex.
+\end{proof}
+
+An interesting question here is whether there are any convex, ancient solutions. That is, can we strengthen mean convexity to convexity? On the sphere for example, if \(M_{-\infty}\) is a Clifford Torus, the answer is no. But the answer is yes for equators and these are the unique, convex, ancient solutions.
+
+\subsection{Lower Regularity Backwards Limits}
+\label{subsection:nonsmooth_backwards_limits}
+
+In general, we may only assert the existence of a minimal surface, smooth away from a Hausdorff co-dimension \(7\) set.
+
+The previous results, may well apply in this case. There are essentially two approaches possible here (maybe more?).
+
+Approach one is to work with functions, compactly supported on the smooth part, \(\Sigma\). In particular, there exists a family \(\eta_{\epsilon} \in C^{\infty}_0\) of smooth functions, compactly supported in the smooth part such that
+\[
+\lim_{\epsilon \to 0\} \|\eta_{\epsilon}\|_{W^{1,2}_0(\Sigma)} \to |\Sigma|.
+\]
+Actually, it's stronger than this. I think \(\eta_{\epsilon}\) converges pointwise a.e. to the characteristic function and the gradient goes to zero. Could be \(L^1\) norms though.
+
+These may be used in place of constant functions, to show for example that in positive Ricci backgrounds, such minimal surfaces are unstable and hence we obtain the existence of ancient solutions.
+
+The principal difficulty here is to show properties of the linearised operator necessary for the stability analysis. For example, we need our operator to be sectorial on \(W^{1,2}_0\) or perhaps it's intersection with little H\"older spaces, or perhaps the closure of \(C^{\infty}_0\) in the little H\"older spaces (is that the same thing?). This ensures for example, that the semi-group is well defined, an essential ingredient in all the proofs.
+
+Approach two is to use the idea of the foliation of \(\R^8\) by minimal surfaces, with exactly one singular leaf - the minimal Simons' cone. So locally near a singularity we may have something similar and perhaps we can do some perturbation to remove the singularity. Perhaps a perturbation by the curvature flow (if we can find a monotone one!) will provide a similar (not minimal though) foliation, through we which we may study the singularity. Then presumably, we would need to pass to a limit along the foliation.
+
+Either way however, one needs to understand the singularity somehow and show that we can deal with it.
+
+These thoughts might prove useful in studying the possibility of ancient solutions with non-smooth backwards limits. For example, in a compact background, we have Hausdorff distance compactness and so always obtain a unique backwards limit when the flow is monotone (\(F\)-convex). In certain situations, like MCF, it may be possible to obtain higher regularity of backwards limits to show they are smooth. In fact, all that is required in the sphere for general flows, is that the mean curvature is bounded and then the flow is by geodesic spheres. So questions here are whether there exists low regularity minimal surfaces in the sphere and whether these can arise as backwards limits of convex flows.
+
+If the flow is not \(F\)-convex we still get sub-sequential limits, but I don't know if these are necessarily unique.
+
+\subsection{Examples}
+\label{subsec:minimal_examples}
+
+Equator example
+
+Clifford torus example.
+
+\section{Applications}
+\label{sec:applications}
+
+\subsection{Applications to Totally Geodesic Submanifolds}
+\label{subsec:applications_totally_geodesic}
+
+Suppose a convex, ancient solution \(M_t\) exists and the Harnack inequality holds. The Harnack implies that \(H \to 0\) as \(t \to -\infty\), and since \(0 < |A|^2 \leq H^2\) we find that \(A \to 0\) as \(t \to -\infty\). Now apply bootstrapping arguments to show that in fact \(A \to 0\) smoothly and that \(M_t \to M_{-\infty}\) a smooth, closed, totally geodesic hypersurface.
+
+Thus if we can prove a Harnack inequality, and the existence of convex, ancient solutions, we obtain the existence of closed, totally geodesic hypersurfaces.
+
+Conversely, if a closed, totally geodesic hypersurface exists, does there exist a convex, ancient solution emanating from it?
+
+These considerations should be tempered by the discussion of the existence of totally geodesic hypersurfaces above. They generically \textbf{do not exist!}.
 
 \section{Linearising Immersions}
 \label{sec:linearising_immersions}
