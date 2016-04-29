@@ -74,8 +74,8 @@ V = \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\ri
 \]
 for the potential.
 
-\begin{remark}
-In the case of the Mean Curvature Flow, \(\Box = \Delta), the Laplacian, \(\ric_{\cdot{F}} = \ric\), and \(|\mathcal{W}|_{\cdot{F}} = |\mathcal{W}|\). Thus we have
+\begin{rem}
+In the case of the Mean Curvature Flow, \(\Box = \Delta\), the Laplacian, \(\ric_{\cdot{F}} = \ric\), and \(|\mathcal{W}|_{\cdot{F}} = |\mathcal{W}|\). Thus we have
 \[
 L u = \Delta u + (\ric(\nu_0, \nu_0) + |\mathcal{W}|^2) u.
 \]
@@ -88,7 +88,7 @@ and associated index form,
 I(u) = \int_{M_0} -|\nabla u|^2 + V u^2.
 \]
 In that particular case where \(V > 0\) on \(M_0\) (for example if \(\ric > 0\)), by choosing \(u \equiv u_0\) is constant, we obtain the existence of a function \(u\) with \(I(u) > 0\). Equivalently, there exists a \(u\) with \(I(u) > 0\) if and only if \(M_0\) is unstable. In the case of positive Ricci, this is the well known result that all minimal surfaces are unstable.
-\end{remark}
+\end{rem}
 
 \subsection{The Spectrum}
 \label{subsec:spectrum}
@@ -143,16 +143,16 @@ and the eigenspace associated to \(\lambda_1\) is one-dimensional.
 \subsection{Existence and Morse Index}
 \label{subsec:existence_index}
 
-The results in \cite{pitts:/1976,pitts:/1981,pitts:1983,SchoenSimon:1981} show tat if \((\bar{M}, \bar{g})\) ensure that there exists closed, minimal hyper-surfaces in \(M\). The regularity theory (Almgran? best get some good refs here!) of minimal surfaces shows that \(M\) is smooth apart from a set of Hausdorff dimension \(\leq n-7\) (some of Pitts result have max dimension 5 or 6 - what's that all about?). In particular if \(\bar{M}\) has dimension no larger than six, there exists a smooth, closed minimal hyper-surface.
+The results in \cite{pitts:/1976,pitts:/1981,pitts:/1983,SchoenSimon:/1981} show tat if \((\bar{M}, \bar{g})\) ensure that there exists closed, minimal hyper-surfaces in \(M\). The regularity theory (Almgran? best get some good refs here!) of minimal surfaces shows that \(M\) is smooth apart from a set of Hausdorff dimension \(\leq n-7\) (some of Pitts result have max dimension 5 or 6 - what's that all about?). In particular if \(\bar{M}\) has dimension no larger than six, there exists a smooth, closed minimal hyper-surface.
 
 A reference for the lack of such in negatively curved spaces would be handy here.
 
 \subsection{Totally Geodesic Hypersurfaces}
 \label{subsec:totally_geodesic}
 
-In symmetric spaces, a standard result says that if \((\bar{M}, \bar{g})\) is an irreducible, symmetric space then there exists a totally geodesic hypersurface \(M\) in \(\bar{M}\) if and only if \((\bar{M}, \bar{g})\) is a space-form (\cite{BenrdtOlmos:2014} mentions it, but a better ref?). Thus by the previous paragraph, the Harnack inequality cannot hold in an irreducible, symmetric space of non-constant curvature.
+In symmetric spaces, a standard result says that if \((\bar{M}, \bar{g})\) is an irreducible, symmetric space then there exists a totally geodesic hypersurface \(M\) in \(\bar{M}\) if and only if \((\bar{M}, \bar{g})\) is a space-form (\cite{BenrdtOlmos:/2014} mentions it, but a better ref?). Thus by the previous paragraph, the Harnack inequality cannot hold in an irreducible, symmetric space of non-constant curvature.
 
-There is also another interesting result \cite{BenrdtOlmos:2014} that says, again in the irreducible case, \(rk(\bar{M}, \bar{g}) \leq i(\bar{M}, \bar{g})\) where \(i\) denotes the least co-dimension for which a totally geodesic submanifold exists, and \(rk\) denotes the rank. This implies that for an irreducible, rank 2 or higher symmetric space, again no totally geodesic hypersurface exists. Not of course, that the result of the previous paragraph is much stronger and already implies the lack of a totally geodesic hypersurface. The two results combined imply that a rank at most one, irreducible, symmetric space that is not a space-form, then no totally geodesic hypersurfaces exist.
+There is also another interesting result \cite{BenrdtOlmos:/2014} that says, again in the irreducible case, \(rk(\bar{M}, \bar{g}) \leq i(\bar{M}, \bar{g})\) where \(i\) denotes the least co-dimension for which a totally geodesic submanifold exists, and \(rk\) denotes the rank. This implies that for an irreducible, rank 2 or higher symmetric space, again no totally geodesic hypersurface exists. Not of course, that the result of the previous paragraph is much stronger and already implies the lack of a totally geodesic hypersurface. The two results combined imply that a rank at most one, irreducible, symmetric space that is not a space-form, then no totally geodesic hypersurfaces exist.
 
 Robert Bryant (\url{http://mathoverflow.net/questions/209618/existence-of-totally-geodesic-hypersurfaces}) notes that generically, totally geodesic hypersurfaces do not exist in Riemannian manifolds.
 
@@ -190,7 +190,7 @@ On the other hand, if such a solution exists, then there is \(t_0 < 0\) such tha
 \end{proof}
 
 \subsubsection{Uniqueness of Ancient Solutions}
-\label\label{subsubsec:smooth_ancient_uniqueness}
+\label{subsubsec:smooth_ancient_uniqueness}
 
 \begin{thm}
 Suppose that there is a unique eigenvalue with \(\text{Re} \lambda_1 > 0\). Then, up to choosing a side of \(M_{-\infty}\), there exists a unique ancient solution converging backwards to \(M_{-\infty}\). 
@@ -233,7 +233,7 @@ The previous results, may well apply in this case. There are essentially two app
 
 Approach one is to work with functions, compactly supported on the smooth part, \(\Sigma\). In particular, there exists a family \(\eta_{\epsilon} \in C^{\infty}_0\) of smooth functions, compactly supported in the smooth part such that
 \[
-\lim_{\epsilon \to 0\} \|\eta_{\epsilon}\|_{W^{1,2}_0(\Sigma)} \to |\Sigma|.
+\lim_{\epsilon \to 0} \|\eta_{\epsilon}\|_{W^{1,2}_0(\Sigma)} \to |\Sigma|.
 \]
 Actually, it's stronger than this. I think \(\eta_{\epsilon}\) converges pointwise a.e. to the characteristic function and the gradient goes to zero. Could be \(L^1\) norms though.
 
