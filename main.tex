@@ -43,7 +43,7 @@ where \(\Gamma(T^{\ast} \odot T^{\ast}M)_+\) denotes the fibre bundle of positiv
 \]
 we obtain a positive definite (from the parabolicity condition), symmetric bi-linear form on \(T^{\ast}M\),
 \[
-B_{\dot{F}} (\alpha, \beta) = \alpha_i \beta_j F^{ij}
+B_{\dot{F}} (\alpha, \beta) = F^{ij} \alpha_i \beta_j
 \]
 where \(\alpha = \alpha_i dx^i, \beta = \beta_i dx^i\). We can use \(B_{\dot{F}}\) to define musical isomorphisms and so raise and lower indices. In particular, denote by \(\ric_{\dot{F}}\) the trace of \(\rm\) with respect to \(B_{\dot{F}}\),
 \[
@@ -51,7 +51,7 @@ where \(\alpha = \alpha_i dx^i, \beta = \beta_i dx^i\). We can use \(B_{\dot{F}}
 \]
 We also have associated norms
 \[
-|\alpha|_{\dot{F}}^2 = B_{\cdot{F}}(\alpha, \alpha)
+|\alpha|_{\dot{F}}^2 = B_{\dot{F}}(\alpha, \alpha)
 \]
 which induces, in particular, a norm on endomorphisms \(T \in T^{\ast}M \otimes TM\)
 \[
@@ -60,13 +60,13 @@ which induces, in particular, a norm on endomorphisms \(T \in T^{\ast}M \otimes 
 
 Let us also define the operator
 \[
-\Box u = \dot{F}^{ij} \nabla^2_{ij} u.
+\Box u = \Box_{\dot{F}} u = \dot{F}^{ij} \nabla^2_{ij} u.
 \]
 
 Then arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
 \begin{equation}
 \label{eq:linearisation}
-L u = \Box u + \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right) u
+L u = L_{\dot{F}} u = \Box u + \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right) u
 \end{equation}
 where derivatives and norms are computed with respect to the metric \(g_0 = X_0^{\ast} \bar{g}\) induced on \(M_0 = X_0(M)\), and Levi-Civita connection \(\nabla_0\). For convenience, let us set
 \[
@@ -75,11 +75,11 @@ V = \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\ri
 for the potential.
 
 \begin{rem}
-In the case of the Mean Curvature Flow, \(\Box = \Delta\), the Laplacian, \(\ric_{\cdot{F}} = \ric\), and \(|\mathcal{W}|_{\cdot{F}} = |\mathcal{W}|\). Thus we have
+In the case of the Mean Curvature Flow, \(\Box = \Delta\), the Laplacian, \(\ric_{\dot{F}} = \ric\), and \(|\mathcal{W}|_{\dot{F}} = |\mathcal{W}|\). Thus we have
 \[
 L u = \Delta u + (\ric(\nu_0, \nu_0) + |\mathcal{W}|^2) u.
 \]
-Integrating by parts over \(M_0\), we have the bilinear form,
+Integrating by parts over \(M_0\), we have the symmetric bilinear form,
 \[
 B(u, v) = \int_{M_0} v Lu = \int_{M_0} -\inpr{\nabla u}{\nabla v} + V uv 
 \]
@@ -87,13 +87,13 @@ and associated index form,
 \[
 I(u) = \int_{M_0} -|\nabla u|^2 + V u^2.
 \]
-In that particular case where \(V > 0\) on \(M_0\) (for example if \(\ric > 0\)), by choosing \(u \equiv u_0\) is constant, we obtain the existence of a function \(u\) with \(I(u) > 0\). Equivalently, there exists a \(u\) with \(I(u) > 0\) if and only if \(M_0\) is unstable. In the case of positive Ricci, this is the well known result that all minimal surfaces are unstable.
+The index form is of course, precisely the index form for the area functional of minimal surfaces. In that particular case where \(V > 0\) on \(M_0\) (for example if \(\ric > 0\)), by choosing \(u \equiv u_0\) is constant, we obtain the existence of a function \(u\) with \(I(u) > 0\). Equivalently, there exists a \(u\) with \(I(u) > 0\) if and only if \(M_0\) is unstable. In the case of positive Ricci, this is the well known result that all minimal surfaces are unstable.
 \end{rem}
 
 \subsection{The Spectrum}
 \label{subsec:spectrum}
 
-We have a basic theorem regarding the spectrum \(\sigma = \sigma(L)\) of \(L\). Let us define,
+We have some basic theorems regarding the spectrum \(\sigma = \sigma(L)\) of \(L\). Let us define,
 \[
 \sigma_{\pm} (L) = \{\lambda \in \sigma(L) : \pm \text{Re}(\lambda) > 0\}
 \]
@@ -106,19 +106,112 @@ and
 \begin{thm}
 Suppose \(L\) may be written in divergence form,
 \[
-L u = \div\left[\left(F^{ij} \nabla_j u + u X^i\right)\partial_i\right] - g(X, \nabla u) + c u.
+L u = \dive\left[\left(F^{ij} \nabla_j u + u X^i\right)\partial_i\right] - g(X, \nabla u) + c u.
 \]
 Then the eigenvalues of \(L\) are real, and the principal eigenvalue \(\lambda_1\) is simple.
 \end{thm}
 
-The proof is standard, such as in \cite[Theorems 8.37, 8.38]{GilbargTrudinger:/2001}.
+The proof is standard, such as in \cite[Theorems 8.37, 8.38]{GilbargTrudinger:/2001}. It follows by showing that \(L\) is self-adjoint with respect to the \(L^2\) inner-product, integrating against the metric volume form. To see that the operator is self-adjoint, let us write
+\[
+^{\dot{F}}\nabla u = \dot{F^{ij}} \nabla_j u \partial_i
+\]
+for the raising of the index for \(du\) with respect to \(\dot{F}\). That is, \(^{\dot{F}} \nabla u\) is the unique vector field satisfying,
+\[
+B_{\dot{F}} (du, \alpha) = \alpha(^{\dot{F}}\nabla u)
+\]
+for all \(1\)-forms, \(\alpha\). In this notation we may write
+\[
+L u = \dive(^{\dot{F}}\nabla u + u X).
+\]
+
+Integrating by parts, we then obtain
+\[
+B(u, v) = \langle Lu, v \rangle_{L^2} = \int v L u = -\int B_{\dot{F}} (dv, du) - g(\nabla v, uX) - g(\nabla u, v X),
+\]
+is symmetric, so that \(L\) is self-adjoint.
+
+Next let us consider the conditions on \(F\) for which \(L\) becomes self-adjoint. That, is when does there exist a vector field \(X\) and function \(c\), so that,
+\[
+L u = \Box u + \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right) u = \dive\left[^{\dot{F}} \nabla u + u X\right] - g(X, \nabla u) + c u?
+\]
+Equivalently, \(F\) must satisfy
+\[
+\Box_{\dot{F}} u = \dive(^{\dot{F}} \nabla u)
+\]
+and \(X\) may be arbitrary, which then necessitates the choice
+\[
+c = V - \dive(X).
+\]
+The addition of the vector field \(X\) may be of use in the case that the potential exhibits singularities or grows too quickly. (\textbf{Not really sure of this claim, but it doesn't hurt to leave it there in case it becomes useful}).
+
+Let us summarise some notation first. Recall that \(\dot{F} \in \Gamma(TM \odot TM) \simeq \Gamma(B_{\text{Sym}}(T^{\ast}M))\) where \(B_{\text{Sym}}(T^{ast}M)\) denotes the vector bundle of symmetric, bilinear forms on \(T^{\ast}M\). We write \(\nabla u = du \in \Gamma(T^{\ast} M)\), \(\nabla^2 \in \Gamma(T^{\ast} M \odot T^{\ast} M)\) and \(\nabla \dot{F} \in \Gamma(T^{\ast} M \otimes TM \odot TM)\).
+
+In this notation,
+\[
+\Box_{\dot{F}} u = \tr \tr (\dot{F} \otimes \nabla^2 u)
+\]
+where
+\[
+\dot{F} \otimes \nabla^2 u \in \Gamma(TM \odot TM \otimes T^{\ast} M \odot T^{\ast} M)
+\]
+and the symmetric products imply that the two traces (total contraction) in \(\Box_{\dot{F}} u\) is well defined independent of which \(T^{\ast} M\) position is contracted with which \(TM\) position.
+
+On the other hand,
+\[
+^{\dot{F}}\nabla u = \tr \dot{F} \otimes \nabla u,
+\]
+again the symmetry of \(\dot{F}\) implying that the trace is independent of which \(TM\) position of \(\dot{F}\) we contract with \(\nabla u\). Then we compute,
+\begin{align*}
+\dive (^{\dot{F}}\nabla u) &= \tr (\nabla(\tr \dot{F} \otimes \nabla u)) \\
+&= \tr^2 (\nabla \dot{F} \otimes \nabla u + \dot{F} \otimes \nabla^2 u) \\
+&= \tr^2 (\nabla \dot{F} \otimes \nabla u) + \Box_{\dot{F}} u.
+\end{align*}
+Thus we may rewrite \(L u\) in almost-divergence form,
+\[
+L u = \dive (^{\dot{F}}\nabla u) - \tr^2 (\nabla \dot{F} \otimes \nabla u) + V u.
+\]
+
+Integrating by parts with respect to a density \(\varphi\), we then have
+\begin{align*}
+B(u, v) = \int v Lu \varphi d\mu &= \int v\left(\dive (^{\dot{F}}\nabla u) - \tr^2 (\nabla \dot{F} \otimes \nabla u) + V u\right) \varphi d\mu \\
+&= \int \dive (v\varphi ^{\dot{F}}\nabla u) + V u v \varphi - \varphi g(\nabla v, ^{\dot{F}}\nabla u) \\
+&= - v g (\nabla \varphi, ^{\dot{F}}\nabla u) - v\varphi \tr^2 (\nabla \dot{F} \otimes \nabla u) d\mu.
+\end{align*}
+
+The second line is symmetric since the divergence integrates to zero by Stokes' theorem, the potential term is clearly symmetric and the last term is symmetric since \(\dot{F}\) is symmetric. Thus \(B\) is symmetric (and hence \(L\) is self-adjoint with respect to the \(\varphi\)-weighted \(L^2\) inner-product) if and only if we can choose \(\phi\) such that the last line is symmetric.
+
+This last line may be rewritten
+\begin{align*}
+- v \tr^2(\dot{F} \otimes \nabla \varphi \otimes \nabla u) - v \varphi \tr^2(\nabla \dot{F} \otimes \nabla u) &= -v \tr^2 \left((\dot{F} \otimes \nabla \varphi + \varphi \nabla \dot{F}) \otimes \nabla u\right) \\
+&= -v \tr^2 \left(\nabla (\varphi \dot{F}) \otimes \nabla u\right) \\
+&= - \tr^2 \left(\nabla (\varphi \dot{F}) \otimes \nabla (uv)\right) + u \tr^2 \left(\nabla (\varphi \dot{F}) \otimes \nabla v\right) \\
+&= - v \tr\left((^{\dot{F}} \nabla \varphi + \varphi \tr \nabla \dot{F}) \otimes \nabla u\right).
+\end{align*}
+
+I don't know which expression on the right is the most useful here. One possibility is that the right hand side vanishes for all \(u, v\). This occurs if and only if,
+\[
+^{\dot{F}} \nabla \varphi + \varphi \tr \nabla \dot{F} = 0.
+\]
+Equivalently,
+\[
+\nabla \ln \varphi = - \tr \left(\dot{F}^{-1} \otimes \tr \nabla \dot{F}\right).
+\]
+In local coordinates, it's
+\[
+\nabla_k \ln \varphi = -\dot{F}^{-1}_{kj} \nabla_i \dot{F}^{ij}.
+\]
+In other words, the one form,
+\[
+\alpha = -\dot{F}^{-1}_{kj} \nabla_i \dot{F}^{ij} dx^k
+\]
+is a co-cycle,
+\[
+\alpha = \nabla \ln \varphi.
+\]
+A necessary condition (but only sufficient in the simply connected case) is that \(\nabla \alpha\) is symmetric.
 
 \begin{rem}
-We should be able to do better than above. I think probably for the divergence part, we really only need something for which Stoke's theorem may be applied. Might be worth looking into some more to see which operators satisfy this requirement. But it does seem rather restrictive - though the results to pertain to the Mean Curvature Flow at least.
-\end{rem}
-
-\begin{rem}
-But more importantly, can we obtain the same results for potentials that are semi-concave (\(V(x)\) has bounded below second derivative). Is semi-concavity important, or do we just need bounded potential \(V\)? See for example \cite[Theorem 6.5.3]{Evans:/1998} which applies to operators of our form, but with \emph{negative} potential (note that Evans takes the convention of e.g. \(L = -\Delta + V\) with \(V \geq 0\) and after multiplying by \(-1\) we get \(L = \Delta - V\)). Our potentials are positive, but is there a trick that allows us to add something to \(u\) or multiply by \(u\) by something to obtain a new equation with \(V \leq 0\)? Then we may apply \cite[Theorem 6.5.3]{Evans:/1998} to discover that the principal eigenvalue is real and simple. The main point about the sign on \(V\) seems to be in showing that if \(Lu = f\) for \(f \geq 0\), then the strong maximum principle applies to show that \(u > 0\).
+Can we obtain the same results for potentials that are semi-concave (\(V(x)\) has bounded below second derivative)? Is semi-concavity important, or do we just need bounded potential \(V\)? See for example \cite[Theorem 6.5.3]{Evans:/1998} which applies to operators of our form, but with \emph{negative} potential (note that Evans takes the convention of e.g. \(L = -\Delta + V\) with \(V \geq 0\) and after multiplying by \(-1\) we get \(L = \Delta - V\)). Our potentials are positive, but is there a trick that allows us to add something to \(u\) or multiply by \(u\) by something to obtain a new equation with \(V \leq 0\)? Then we may apply \cite[Theorem 6.5.3]{Evans:/1998} to discover that the principal eigenvalue is real and simple. The main point about the sign on \(V\) seems to be in showing that if \(Lu = f\) for \(f \geq 0\), then the strong maximum principle applies to show that \(u > 0\).
 
 It appears as though the relevant result goes by the name of the Krein-Rutman theorem. See for example \cite[Appendix C, Chapter 11]{smoller:/1983}. An example is given where the theorem is applied, but again it only applies to negative potentials!
 
