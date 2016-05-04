@@ -174,21 +174,28 @@ L u = \dive (^{\dot{F}}\nabla u) - \tr^2 (\nabla \dot{F} \otimes \nabla u) + V u
 Integrating by parts with respect to a density \(\varphi\), we then have
 \begin{align*}
 B(u, v) = \int v Lu \varphi d\mu &= \int v\left(\dive (^{\dot{F}}\nabla u) - \tr^2 (\nabla \dot{F} \otimes \nabla u) + V u\right) \varphi d\mu \\
-&= \int \dive (v\varphi ^{\dot{F}}\nabla u) + V u v \varphi - \varphi g(\nabla v, ^{\dot{F}}\nabla u) \\
-&= - v g (\nabla \varphi, ^{\dot{F}}\nabla u) - v\varphi \tr^2 (\nabla \dot{F} \otimes \nabla u) d\mu.
+&= \int \dive (v\varphi ^{\dot{F}}\nabla u) + V u v \varphi - \varphi g(\nabla v, ^{\dot{F}}\nabla u) d\mu \\
+&= - \int v g (\nabla \varphi, ^{\dot{F}}\nabla u) + v\varphi \tr^2 (\nabla \dot{F} \otimes \nabla u) d\mu.
 \end{align*}
 
-The second line is symmetric since the divergence integrates to zero by Stokes' theorem, the potential term is clearly symmetric and the last term is symmetric since \(\dot{F}\) is symmetric. Thus \(B\) is symmetric (and hence \(L\) is self-adjoint with respect to the \(\varphi\)-weighted \(L^2\) inner-product) if and only if we can choose \(\phi\) such that the last line is symmetric.
+The second line is symmetric since the divergence integrates to zero by Stokes' theorem, the potential term is clearly symmetric and the last term is symmetric since \(\dot{F}\) is symmetric:
+\[
+g(\nabla v, ^{\dot{F}}\nabla u) = \tr^2(\dot{F} \otimes \nabla u \otimes \nabla v) = g(\nabla u, ^{\dot{F}}\nabla v).
+\]
 
-This last line may be rewritten
+Thus \(B\) is symmetric (and hence \(L\) is self-adjoint with respect to the \(\varphi\)-weighted \(L^2\) inner-product) if and only if we can choose \(\varphi\) such that the last line is symmetric.
+
+\begin{rem}
+In the particular case of the Mean Curvature Flow, \(\nabla \dot{F} \equiv 0\) and we simply choose \(\varphi \equiv 1\). In other words, in this case, the linearisation \(L\) is already self-adjoint, we no weight is required.
+\end{rem}
+
+In general, the integrand on the last line may be rewritten
 \begin{align*}
-- v \tr^2(\dot{F} \otimes \nabla \varphi \otimes \nabla u) - v \varphi \tr^2(\nabla \dot{F} \otimes \nabla u) &= -v \tr^2 \left((\dot{F} \otimes \nabla \varphi + \varphi \nabla \dot{F}) \otimes \nabla u\right) \\
-&= -v \tr^2 \left(\nabla (\varphi \dot{F}) \otimes \nabla u\right) \\
-&= - \tr^2 \left(\nabla (\varphi \dot{F}) \otimes \nabla (uv)\right) + u \tr^2 \left(\nabla (\varphi \dot{F}) \otimes \nabla v\right) \\
-&= - v \tr\left((^{\dot{F}} \nabla \varphi + \varphi \tr \nabla \dot{F}) \otimes \nabla u\right).
+v \tr^2(\dot{F} \otimes \nabla \varphi \otimes \nabla u) + v \varphi \tr^2(\nabla \dot{F} \otimes \nabla u) &= v \tr^2 \left((\dot{F} \otimes \nabla \varphi + \varphi \nabla \dot{F}) \otimes \nabla u\right) \\
+&= v \tr\left((^{\dot{F}} \nabla \varphi + \varphi \tr \nabla \dot{F}) \otimes \nabla u\right).
 \end{align*}
 
-I don't know which expression on the right is the most useful here. One possibility is that the right hand side vanishes for all \(u, v\). This occurs if and only if,
+One possibility is that the right hand side vanishes for all \(u, v\). This occurs if and only if,
 \[
 ^{\dot{F}} \nabla \varphi + \varphi \tr \nabla \dot{F} = 0.
 \]
@@ -202,13 +209,68 @@ In local coordinates, it's
 \]
 In other words, the one form,
 \[
-\alpha = -\dot{F}^{-1}_{kj} \nabla_i \dot{F}^{ij} dx^k
+\alpha = - \tr \left(\dot{F}^{-1} \otimes \tr \nabla \dot{F}\right) = -\dot{F}^{-1}_{kj} \nabla_i \dot{F}^{ij} dx^k
 \]
 is a co-cycle,
 \[
 \alpha = \nabla \ln \varphi.
 \]
-A necessary condition (but only sufficient in the simply connected case) is that \(\nabla \alpha\) is symmetric.
+A necessary condition (but sufficient only in the simply connected case) is that \(\nabla \alpha\) is symmetric. We have,
+\[
+\nabla \alpha (\partial_i, \partial_j) = - \nabla_i(\dot{F}^{-1}_{jk} \nabla_l \dot{F}^{kl}) - \alpha(\nabla_i \partial_j).
+\]
+The second term is symmetric already. For the first term we thus require
+\[
+\nabla_i(\dot{F}^{-1}_{jk} \nabla_l \dot{F}^{kl}) =  \nabla_j(\dot{F}^{-1}_{ik} \nabla_l \dot{F}^{kl}).
+\]
+Computing, we have
+\begin{align*}
+\nabla_i(\dot{F}^{-1}_{jk} \nabla_l \dot{F}^{kl}) &= \nabla_i(\dot{F}^{-1}_{jk} \dot{F}^{kl,pq} \nabla_l h_{pq}) \\
+&= \nabla_i (\dot{F}^{-1}_{jk}) \nabla_l \dot{F}^{lk} + \dot{F}^{-1}_{jk} \nabla_i (\nabla_l \dot{F}^{lk})
+\end{align*}
+
+
+\textbf{Not sure how to swap \(i\) and \(j\) though}. Perhaps the Homogeneous case, where \(\dot{F}^{ij} = b^{ij} F\) could be of interest. Here \(b^{ij}\) is the inverse of the second fundamental form. Of course, this requires \(\mathcal{W}\) to be non-singular, and I don't know likely this is to be true for minimal surface. Equators in spheres for example, are totally geodesic and hence \(\mathcal{W} \equiv 0\)!
+
+Or perhaps, it may be better to write,
+\begin{align*}
+v \tr^2(\dot{F} \otimes \nabla \varphi \otimes \nabla u) + v \varphi \tr^2(\nabla \dot{F} \otimes \nabla u) &= v \tr^2 \left(\nabla (\varphi \dot{F}) \otimes \nabla u\right) \\
+&= \tr^2 \left(\nabla (\varphi \dot{F}) \otimes \nabla (uv)\right) - \tr \left(\dive (\varphi \dot{F}) \otimes u \nabla v\right)
+\end{align*}
+
+The first term is symmetric. As to the second term, we have
+\begin{align*}
+\tr \left(\dive (\varphi \dot{F}) \otimes u \nabla v\right) &= \tr \nabla \tr \left(\varphi \dot{F} \otimes u \nabla v\right) - \tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right) \\
+&= \dive \left(\tr \varphi\dot{F} \otimes u \nabla v\right) - \tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right)
+\end{align*}
+
+The first term integrates to zero, and continuing with the second term,
+\begin{align*}
+\tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right) = \tr^2\left(\varphi \dot{F} \otimes \nabla u \otimes \nabla v\right) + \tr^2\left(\varphi \dot{F} \otimes u \nabla^2 v)\right)
+\end{align*}
+
+On the other hand
+\begin{align*}
+\tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right) &= \tr^2\left(\varphi \dot{F} \otimes \nabla^2(uv)\right) - \tr^2\left(\varphi \dot{F} \otimes \nabla v \otimes \nabla u\right)  - \tr^2\left(\varphi \dot{F} \otimes v \nabla^2 u\right) \\
+&=  \tr^2\left(\varphi \dot{F} \otimes \nabla^2(uv)\right) - \tr^2\left(\varphi \dot{F} \otimes v \nabla^2 u\right) \\
+&\quad -\tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right) + \tr^2\left(\varphi \dot{F} \otimes u \nabla^2 v)\right)
+\end{align*}
+Therefore,
+\[
+\tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right) = \frac{1}{2} \tr^2\left[\varphi \dot{F} \otimes \left(\nabla^2(uv) + u \nabla^2 v - v \nabla^2 u\right)\right]
+\]
+
+Writing \(C(u,v)\) for all the symmetric parts, the result would be something like
+\[
+B(u, v) = C(u, v) + \frac{1}{2}\int \tr^2\left[\varphi\dot{F} \otimes \left(u \nabla^2v - v \nabla^2 u\right) \right] = C(u, v) + D(u, v)
+\]
+but where \(D\) is anti-symmetric, so that
+\[
+B(u,v) = C(v,u) - D(v, u) \ne B(v,u).
+\]
+
+\textbf{With this approach I have not tried to use \(\varphi\) anywhere, but I don't see what could be done with it. In the particular case of MCF, choosing \(\varphi \equiv 1\) produces something symmetric, because \(D \equiv 0\). To obtain this, we need to use the fact that \(\dot{F}^{ij} = g^{ij}\) so that \(\nabla \dot{F}^{ij} = 0\) and we can pass the metric contraction through the \(\nabla\) top write the integrand as a divergence. Here we cannot do that, and I suppose the integral will not vanish for general \(F\). The density \(\varphi\) is of no help here at all! Must need to go back to the first approach, and try to solve for \(\varphi\).}
+
 
 \begin{rem}
 Can we obtain the same results for potentials that are semi-concave (\(V(x)\) has bounded below second derivative)? Is semi-concavity important, or do we just need bounded potential \(V\)? See for example \cite[Theorem 6.5.3]{Evans:/1998} which applies to operators of our form, but with \emph{negative} potential (note that Evans takes the convention of e.g. \(L = -\Delta + V\) with \(V \geq 0\) and after multiplying by \(-1\) we get \(L = \Delta - V\)). Our potentials are positive, but is there a trick that allows us to add something to \(u\) or multiply by \(u\) by something to obtain a new equation with \(V \leq 0\)? Then we may apply \cite[Theorem 6.5.3]{Evans:/1998} to discover that the principal eigenvalue is real and simple. The main point about the sign on \(V\) seems to be in showing that if \(Lu = f\) for \(f \geq 0\), then the strong maximum principle applies to show that \(u > 0\).
