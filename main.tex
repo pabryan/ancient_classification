@@ -20,10 +20,88 @@
 
 \maketitle
 
-\section{Overview}
-\label{sec:overview}
+\section{Background for Project}
+\label{sec:background}
 
 It was conjectured in \cite{IvakiBryan} that for the mean curvature flow in a positively curved, compact background, a convex, ancient solution converges backwards in time to a totally geodesic hypersurface, and there exists at most one non-trivial convex ancient solution emanating from this totally geodesic hypersurface. One line of reasoning that is likely to lead to a proof is that if an ancient solution actually has a smooth limit (this may be shown by means of a Harnack inequality; see \cite{IvakiBryan} in the case $N=\mathbb{S}^n$), then one can linearize the flow at this limit and use some version of the theory of invariant manifolds to conclude that the ancient solution lies on the unstable manifold of its limit as $t\to-\infty$ \cite[Chapters 8, 9]{lunardi2012analytic}. In fact, since the solution is assumed to be convex, its motion is monotone, and it would have to lie on the unstable manifold corresponding to the principal eigenvalue and eigenfunction of the linearization. Since the principal eigenvalue is always simple, the unstable manifold is one-dimensional, so there is only one such orbit. The unstable manifold theorem guarantees existence and uniqueness of the ancient solution emanating from any given unstable minimal hypersurface. The uniqueness of the unstable manifold also implies that the corresponding ancient solution inherits any symmetry that its limit at $t=-\infty$ may have. In the context of nonlinear heat equations, the stable and unstable manifold theory has been developed by Escher, Pr\"{u}ss, Simonett, and others (e.g., see \cite{pruess2012invariant}). It was used for Ricci flow by Gunther, Isenberg, and Knopf, e.g., \cite{guenther2002stability}. Application to mean curvature flow should be easier since the latter flow can be written as a classical quasi-linear PDE in any tubular neighborhood over the limiting hypersurface at $t=-\infty$.
+
+\section{Introduction}
+\label{sec:intro}
+
+Ancient solutions of hypersurface, curvature flows are of great importance in the analysis of singularity formation. Blow-up arguments around a singularity imply that any blow-up sequence converges to a self-similar solution (a soliton). Such solutions are particular examples of an ancient solutions. In general, one may expect other ancient solutions to exist, such as for the Curve Shortening Flow. Understanding ancient solutions also yields insight into the nature of the flow, partly in providing explicit solution to study, and partly in exhibiting general properties and underlying symmetries of the equation. Ancient solutions are also excellent candidates for comparison against general solutions, where complicated behaviour in the general case may be compared with (the often) more simple behaviour of ancient solutions.
+
+In this paper we are interested in understanding when curvature flows admit ancient solutions, and what uniqueness properties such solutions may enjoy. Our setting is that of curvature flows in Riemannian manifolds \((\bar{M}^{n+1}, \bar{g})\), and we focus particularly on the case of compact manifolds with positive Ricci curvature. 
+
+We consider in particular the evolution of hypersurfaces $M^n_t$ by
+\begin{equation}
+\label{eq:CurvFlow}
+\partial_t X = -F \nor
+\end{equation}
+with \(X : M \times I \to \bar{M}\) a smooth, one parameter family of closed hypersurfaces on the interval \(I \subseteq \R\), evolving with speed \(F = F(\weingarten_t)\) a smooth function of the Weingarten map of \(M_t = X_t(M) = X(M, t)\) with respect to a smooth choice of unit normal vector field \(\nor_t\).
+
+We assume the flow to be parabolic, and writing \(F\) as a function of the principal curvatures, \(\kappa(x, t) = (\kappa_1(x,t), \cdots, \kappa_n(x,t))\), this requirement translate to,
+
+\begin{ass}
+\label{ass:speed}
+Let $\Gamma_{+}= \{\kappa \in \R^n : \kappa_i > 0, 1\leq i\leq n\}$ denote the positive cone of principal curvatures. Assume that $F \in C^{\infty}(\Gamma_{+}) \cap C^{0}(\-\Gamma_{+})$ is
+\begin{enumerate}[(i)]
+\item symmetric,
+\item positive on $\Gamma_{+}$ with $F(0)=0$, and
+\item weakly increasing, i.e. for all $1\leq i\leq n$ we have
+\[
+\frac{\del F}{\del \kappa_i} \geq 0.
+\]
+\end{enumerate}
+\end{ass}
+
+Conditions (i) and (iii) assure us that the speed is invariantly defined and the flow is parabolic. Condition (ii) assures that the flow is in the direction of the mean curvature vector, and (infinitesimally) stationary at points where the mean curvature vector vanishes.
+
+Our aim here is to understand for which backgrounds \((\bar{M}, \bar{g})\) and speed \(F\) to ancient solutions exists, and to what extent are they unique. In particular we would like to classify, ancient solutions with some convexity conditions, in terms of closed minimal surfaces. The convexity condition here is that of \(F\)-convex which for a hypersurface \(M\), simply means that \(F(\weingarten) > 0\) everywhere on \(M\).
+
+\begin{thm}[Provisional Theorem]
+\label{thm:classification}
+Let \((\bar{M}, \bar{g})\) be a smooth, compact Riemannian manifold with positive Ricci curvature. Then for each two-sided, closed, minimal hypersurface \(M_0^n \subset \bar{M}^{n+1}\), there exists precisely two ancient, \(F\)-convex solutions, lying locally on opposite sides of \(M_0\), to the curvature flow, \eqref{eq:CurvFlow}, smoothly converging to \(M_0\) as \(t \to -\infty\). Moreover, any convex, ancient solution is such an ancient solution.
+\end{thm}
+
+\begin{rem}
+To say that \(M_t\) lies locally on one side of \(M_0\) is to say that for \(t\) sufficiently close to \(-\infty\), \(M_t\) is contained in one or the other side \(M_0^{\pm}\) of \(M_0\),
+\[
+M_0^{\pm} = \{\exp_{\bar{M}} (\lambda \nor_0) : \pm \lambda > 0, \pm \lambda \nor_0 \in \inj(M_0)\} \subset \bar{M}
+\]
+where \(\nor_0\) denotes a choice of unit normal field along \(M_0\) and \(\inj(M_0)\) denotes the \emph{injectivity domain} of \(M_0\), i.e. the set of tangent vectors to \(\bar{M}\) along \(M_0\) for which \(\exp_{\bar{M}}\) is defined.
+\end{rem}
+
+Analogues of \cref{thm:classification} are known in certain situations such as CSF in the plane, affine-normal flow in the plane, and curvature flows in the sphere. Partial results are known for MCF in higher dimensions also. In these cases, an explicit description may be given since the background space is explicitly known and quite simple. In general of course, we cannot hope for explicit descriptions, but the theorem provides the best one might hope for, a description in terms of the backwards limit. However, in certain cases, where an description of closed, minimal surfaces is available we may be more explicit.
+
+\begin{example}
+The sphere. Equators and Clifford Tori. Any other interesting minimal surfaces?
+\end{example}
+
+\begin{example}
+Projective space?
+\end{example}
+
+\begin{example}
+Rank one, compact, symmetric spaces.
+\end{example}
+
+A powerful approach to obtaining classification results, exploited in several papers is to seek a monotone quantity along the flow, show it must be constant on an ancient solution, and then characterise the case of cases where it is constant by some inequality for the quantity. This method has been employed in \cite{} to obtain classifications.
+
+A very important ingredient in understanding ancient solutions is the Harnack inequality. By letting \(t_0 \to -\infty\), one obtains monotonicity of the Harnack quadratic along the flow for ancient solutions, implying the backwards limit must be minimal. We prove the following Harnack inequality here:
+
+\begin{thm}[Harnack Inequality]
+\[
+Q \geq 0.
+\]
+were \(Q\) denotes the Harnack quadratic.
+\end{thm}
+
+A corollary of the Harnack is that convex, ancient solutions limit backwards to closed, totally geodesic hypersurfaces. As a further result we then obtain the theorem,
+
+\begin{thm}
+Let \(M_t\) be a convex, ancient solution to the curvature flow \eqref{eq:CurvFlow}. Then \(M_t\) has constant mean curvature along the flow and limits smoothly backwards to a totally geodesic, closed hypersurface.
+\end{thm}
+
 
 \section{Linearising Graphs}
 \label{sec:linearising_graphs}
