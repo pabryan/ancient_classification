@@ -1,7 +1,9 @@
 \documentclass{amsart}
 
 \input{StandardPaper2.tex}
-%\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage[bibstyle=alphabetic,citestyle=alphabetic,backend=bibtex]{biblatex}
+\bibliography{Bibliography}
+
 \begin{document}
 
 \title[Ancient Solutions]
@@ -20,34 +22,41 @@
 
 \maketitle
 
-\section{Overview}
-\label{sec:overview}
 
-It was conjectured in \cite{IvakiBryan} that for the mean curvature flow in a positively curved, compact background, a convex, ancient solution converges backwards in time to a totally geodesic hypersurface, and there exists at most one non-trivial convex ancient solution emanating from this totally geodesic hypersurface. One line of reasoning that is likely to lead to a proof is that if an ancient solution actually has a smooth limit (this may be shown by means of a Harnack inequality; see \cite{IvakiBryan} in the case $N=\mathbb{S}^n$), then one can linearize the flow at this limit and use some version of the theory of invariant manifolds to conclude that the ancient solution lies on the unstable manifold of its limit as $t\to-\infty$ \cite[Chapters 8, 9]{lunardi2012analytic}. In fact, since the solution is assumed to be convex, its motion is monotone, and it would have to lie on the unstable manifold corresponding to the principal eigenvalue and eigenfunction of the linearization. Since the principal eigenvalue is always simple, the unstable manifold is one-dimensional, so there is only one such orbit. The unstable manifold theorem guarantees existence and uniqueness of the ancient solution emanating from any given unstable minimal hypersurface. The uniqueness of the unstable manifold also implies that the corresponding ancient solution inherits any symmetry that its limit at $t=-\infty$ may have. In the context of nonlinear heat equations, the stable and unstable manifold theory has been developed by Escher, Pr\"{u}ss, Simonett, and others (e.g., see \cite{pruess2012invariant}). It was used for Ricci flow by Gunther, Isenberg, and Knopf, e.g., \cite{guenther2002stability}. Application to mean curvature flow should be easier since the latter flow can be written as a classical quasi-linear PDE in any tubular neighborhood over the limiting hypersurface at $t=-\infty$.
-
-\section{Linearising Graphs}
-\label{sec:linearising_graphs}
-
-\subsection{The Linearisation}
-\label{subsec:linearisation}
-
-The linearisation of the flow is given in \cite[Lemma 3.5]{Harltey:/2016}. Compared with the setting there, in our situation there is no weight function: \(\Xi = 0\) and so the integral terms disappear. Moreover, we do not assume that \(M_0\) is totally umbilic. Let us introduce a little notation, and rephrase the result of \cite[Lemma 3.5]{Harltey:/2016} in this notation.
+\section{Notation and Conventions}
+\label{sec:notation}
 
 The speed function, \(F: \Gamma(T^{\ast}M \otimes TM) \to C^{\infty}(M)\) may be thought of as a function \(F : \Gamma(T^{\ast} M \otimes T^{\ast}M) \times \Gamma(T^{\ast} \odot T^{\ast}M)_+ \to C^{\infty}(M)\) via
 \[
-F(h, g) = F(\tr_g h)
+F(h, g) = F(\Tr_g h)
 \]
-where \(\Gamma(T^{\ast} \odot T^{\ast}M)_+\) denotes the fibre bundle of positive-definite, symmetric bilinear forms. Writing
+where \(\Gamma(T^{\ast} \odot T^{\ast}M)_+\) denotes the fibre bundle of positive-definite, symmetric bilinear forms. 
+
+Writing
 \[
-\dot{F}^{ij} = \partial_{h_{ij}} F = g^{ik} \partial_{h^j_k} F
+\dot{F}\left|_A\right. (B) = \left.\frac{d}{ds} \right|_{s=0} F(A + s B),
 \]
 we obtain a positive definite (from the parabolicity condition), symmetric bi-linear form on \(T^{\ast}M\),
 \[
-B_{\dot{F}} (\alpha, \beta) = F^{ij} \alpha_i \beta_j
+B_{\dot{F}} (\alpha, \beta) = \dot{F} ( \alpha \otimes \beta).
 \]
-where \(\alpha = \alpha_i dx^i, \beta = \beta_i dx^i\). We can use \(B_{\dot{F}}\) to define musical isomorphisms and so raise and lower indices. In particular, denote by \(\ric_{\dot{F}}\) the trace of \(\rm\) with respect to \(B_{\dot{F}}\),
+
+With respect to a frame $\{E_i\}$, we may write
 \[
-(\ric_{\dot{F}})_{ij} = \dot{F}^{kl} \riem_{kilj}.
+\dot{F} (B) = \dot{F}^{ij} B_{ij}.
+\]
+where $B_{ij} = B(E_i, E_j)$ and $\dot{F}^{ij} = \dot{F} (dx^i \otimes dx^j)$. Letting $\theta^i$ denote the dual frame ($\theta^i(E_j) = \delta^i_j$) and writing $\alpha = \alpha_i \theta^i$, $\beta = \beta_j \theta^j$ we have,
+\[
+B_{\dot{F}} (\alpha, \beta) = \dot{F}^{ij} \alpha_i \beta_j.
+\]
+
+We can use \(B_{\dot{F}}\) to define musical isomorphisms and so raise and lower indices. In particular, denote by 
+\[
+\ric_{\dot{F}} = \Tr_{B_{\dot{F}}} \Rm
+\]
+the trace of \(\Rm\) with respect to \(B_{\dot{F}}\), written with respect to a frame as
+\[
+(\ric_{\dot{F}})_{ij} = \dot{F}^{kl} \Rm_{kijl}.
 \]
 We also have associated norms
 \[
@@ -60,40 +69,54 @@ which induces, in particular, a norm on endomorphisms \(T \in T^{\ast}M \otimes 
 
 Let us also define the operator
 \[
-\Box u = \Box_{\dot{F}} u = \dot{F}^{ij} \nabla^2_{ij} u.
+\Box u = \Box_{\dot{F}} u = \dot{F}(\nabla^2 u) = \dot{F}^{ij} \nabla^2_{ij} u.
 \]
 
-Then arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
+\section{Linearisation and Stability}
+\label{sec:linearising_linearisation}
+
+The linearisation of the flow of graphs over a hypersurface $M_0$ is given in \cite[Lemma 3.5]{Harltey:/2016}. Compared with the setting there, in our situation there is no weight function: \(\Xi = 0\) and so the integral terms disappear. Moreover, we do not assume that \(M_0\) is totally umbilic. Let us rephrase the result of \cite[Lemma 3.5]{Harltey:/2016} in the notation of \Cref{sec:notation}.
+
+Arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
 \begin{equation}
 \label{eq:linearisation}
-L u = L_{\dot{F}} u = \Box u + \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right) u
+\tilde{L} u = \tilde{L}_{\dot{F}} u = \Box u + \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right) u
 \end{equation}
-where derivatives and norms are computed with respect to the metric \(g_0 = X_0^{\ast} \bar{g}\) induced on \(M_0 = X_0(M)\), and Levi-Civita connection \(\nabla_0\). For convenience, let us set
+where derivatives and norms are computed with respect to the metric \(g_0 = X_0^{\ast} \bar{g}\) induced on \(M_0 = X_0(M)\), and Levi-Civita connection \(\nabla_0\).
+
+We work with the operator \(L = -\tilde{L}\) since \(-\Box\) is a positive operator (see \Cref{rem:mcflinearisation} below). For convenience, let us set
 \[
-V = \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right)
+V = -\left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right)
 \]
-for the potential.
+for the potential so that,
+\[
+L u = -\Box u + V u.
+\]
 
 \begin{rem}
+\label{rem:mcflinearisation}
 In the case of the Mean Curvature Flow, \(\Box = \Delta\), the Laplacian, \(\ric_{\dot{F}} = \ric\), and \(|\mathcal{W}|_{\dot{F}} = |\mathcal{W}|\). Thus we have
 \[
-L u = \Delta u + (\ric(\nu_0, \nu_0) + |\mathcal{W}|^2) u.
+L u = -\Delta u - (\ric(\nu_0, \nu_0) + |\mathcal{W}|^2) u.
 \]
 Integrating by parts over \(M_0\), we have the symmetric bilinear form,
 \[
-B(u, v) = \int_{M_0} v Lu = \int_{M_0} -\inpr{\nabla u}{\nabla v} + V uv 
+B(u, v) = \int_{M_0} v Lu = \int_{M_0} \inpr{\nabla u}{\nabla v} + V uv 
 \]
 and associated index form,
 \[
-I(u) = \int_{M_0} -|\nabla u|^2 + V u^2.
+I(u) = \int_{M_0} |\nabla u|^2 + V u^2.
 \]
-The index form is of course, precisely the index form for the area functional of minimal surfaces. In that particular case where \(V > 0\) on \(M_0\) (for example if \(\ric > 0\)), by choosing \(u \equiv u_0\) is constant, we obtain the existence of a function \(u\) with \(I(u) > 0\). Equivalently, there exists a \(u\) with \(I(u) > 0\) if and only if \(M_0\) is unstable. In the case of positive Ricci, this is the well known result that all minimal surfaces are unstable.
+The index form is of course, precisely the index form for the area functional of minimal surfaces. In the particular case \(V < 0\) on \(M_0\) (for example if \(\ric > 0\)), by choosing \(u \equiv u_0\) is constant, we obtain the existence of a function \(u\) with \(I(u) < 0\). Equivalently, \(M_0\) has positive Morse index (there exists a negative eigenvalue \(I(u) = \lambda u\) with \(\lambda < 0\) for some $u$) if and only if \(M_0\) is unstable. In the case of positive Ricci, this is the well known result that all minimal surfaces are unstable.
+
+A particularly important feature is that $\Delta$ arises in the Euler-Lagrange equation of the Dirichlet energy $\int_{M_0} |\nabla u|^2$ and so the operator $L = -\Delta + V$ is $L^2$ self adjoint and enjoys a variational characterisation of eigenvalues. In particular, the first eigenvalue,
+\[
+\lambda_1 = \inf \left\{\int_{M_0} u L u : \int_{M_0} u = 1\right\}
+\]
+is simple with corresponding eigenfuction having a sign \(u > 0\) (or \(u < 0\) depending on convention).
 \end{rem}
 
-\subsection{The Spectrum}
-\label{subsec:spectrum}
-
-We have some basic theorems regarding the spectrum \(\sigma = \sigma(L)\) of \(L\). Let us define,
+We adopt the notation from \cite[Chapters 8, 9]{lunardi2012analytic} for notions relating to the spectrum \(\sigma = \sigma(L)\) of \(L\). Define,
 \[
 \sigma_{\pm} (L) = \{\lambda \in \sigma(L) : \pm \text{Re}(\lambda) > 0\}
 \]
@@ -103,364 +126,6 @@ and
 - \omega_- &= \sup \{\text{Re} \lambda : \lambda \in \sigma_-\}.
 \end{align*}
 
-\begin{thm}
-Suppose \(L\) may be written in divergence form,
-\[
-L u = \dive\left[\left(F^{ij} \nabla_j u + u X^i\right)\partial_i\right] - g(X, \nabla u) + c u.
-\]
-Then the eigenvalues of \(L\) are real, and the principal eigenvalue \(\lambda_1\) is simple.
-\end{thm}
+\printbibliography
 
-The proof is standard, such as in \cite[Theorems 8.37, 8.38]{GilbargTrudinger:/2001}. It follows by showing that \(L\) is self-adjoint with respect to the \(L^2\) inner-product, integrating against the metric volume form. To see that the operator is self-adjoint, let us write
-\[
-^{\dot{F}}\nabla u = \dot{F^{ij}} \nabla_j u \partial_i
-\]
-for the raising of the index for \(du\) with respect to \(\dot{F}\). That is, \(^{\dot{F}} \nabla u\) is the unique vector field satisfying,
-\[
-B_{\dot{F}} (du, \alpha) = \alpha(^{\dot{F}}\nabla u)
-\]
-for all \(1\)-forms, \(\alpha\). In this notation we may write
-\[
-L u = \dive(^{\dot{F}}\nabla u + u X).
-\]
-
-Integrating by parts, we then obtain
-\[
-B(u, v) = \langle Lu, v \rangle_{L^2} = \int v L u = -\int B_{\dot{F}} (dv, du) - g(\nabla v, uX) - g(\nabla u, v X),
-\]
-is symmetric, so that \(L\) is self-adjoint.
-
-Next let us consider the conditions on \(F\) for which \(L\) becomes self-adjoint. That, is when does there exist a vector field \(X\) and function \(c\), so that,
-\[
-L u = \Box u + \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right) u = \dive\left[^{\dot{F}} \nabla u + u X\right] - g(X, \nabla u) + c u?
-\]
-Equivalently, \(F\) must satisfy
-\[
-\Box_{\dot{F}} u = \dive(^{\dot{F}} \nabla u)
-\]
-and \(X\) may be arbitrary, which then necessitates the choice
-\[
-c = V - \dive(X).
-\]
-The addition of the vector field \(X\) may be of use in the case that the potential exhibits singularities or grows too quickly. (\textbf{Not really sure of this claim, but it doesn't hurt to leave it there in case it becomes useful}).
-
-Let us summarise some notation first. Recall that \(\dot{F} \in \Gamma(TM \odot TM) \simeq \Gamma(B_{\text{Sym}}(T^{\ast}M))\) where \(B_{\text{Sym}}(T^{ast}M)\) denotes the vector bundle of symmetric, bilinear forms on \(T^{\ast}M\). We write \(\nabla u = du \in \Gamma(T^{\ast} M)\), \(\nabla^2 \in \Gamma(T^{\ast} M \odot T^{\ast} M)\) and \(\nabla \dot{F} \in \Gamma(T^{\ast} M \otimes TM \odot TM)\).
-
-In this notation,
-\[
-\Box_{\dot{F}} u = \tr \tr (\dot{F} \otimes \nabla^2 u)
-\]
-where
-\[
-\dot{F} \otimes \nabla^2 u \in \Gamma(TM \odot TM \otimes T^{\ast} M \odot T^{\ast} M)
-\]
-and the symmetric products imply that the two traces (total contraction) in \(\Box_{\dot{F}} u\) is well defined independent of which \(T^{\ast} M\) position is contracted with which \(TM\) position.
-
-On the other hand,
-\[
-^{\dot{F}}\nabla u = \tr \dot{F} \otimes \nabla u,
-\]
-again the symmetry of \(\dot{F}\) implying that the trace is independent of which \(TM\) position of \(\dot{F}\) we contract with \(\nabla u\). Then we compute,
-\begin{align*}
-\dive (^{\dot{F}}\nabla u) &= \tr (\nabla(\tr \dot{F} \otimes \nabla u)) \\
-&= \tr^2 (\nabla \dot{F} \otimes \nabla u + \dot{F} \otimes \nabla^2 u) \\
-&= \tr^2 (\nabla \dot{F} \otimes \nabla u) + \Box_{\dot{F}} u.
-\end{align*}
-Thus we may rewrite \(L u\) in almost-divergence form,
-\[
-L u = \dive (^{\dot{F}}\nabla u) - \tr^2 (\nabla \dot{F} \otimes \nabla u) + V u.
-\]
-
-Integrating by parts with respect to a density \(\varphi\), we then have
-\begin{align*}
-B(u, v) = \int v Lu \varphi d\mu &= \int v\left(\dive (^{\dot{F}}\nabla u) - \tr^2 (\nabla \dot{F} \otimes \nabla u) + V u\right) \varphi d\mu \\
-&= \int \dive (v\varphi ^{\dot{F}}\nabla u) + V u v \varphi - \varphi g(\nabla v, ^{\dot{F}}\nabla u) d\mu \\
-&= - \int v g (\nabla \varphi, ^{\dot{F}}\nabla u) + v\varphi \tr^2 (\nabla \dot{F} \otimes \nabla u) d\mu.
-\end{align*}
-
-The second line is symmetric since the divergence integrates to zero by Stokes' theorem, the potential term is clearly symmetric and the last term is symmetric since \(\dot{F}\) is symmetric:
-\[
-g(\nabla v, ^{\dot{F}}\nabla u) = \tr^2(\dot{F} \otimes \nabla u \otimes \nabla v) = g(\nabla u, ^{\dot{F}}\nabla v).
-\]
-
-Thus \(B\) is symmetric (and hence \(L\) is self-adjoint with respect to the \(\varphi\)-weighted \(L^2\) inner-product) if and only if we can choose \(\varphi\) such that the last line is symmetric.
-
-\begin{rem}
-In the particular case of the Mean Curvature Flow, \(\nabla \dot{F} \equiv 0\) and we simply choose \(\varphi \equiv 1\). In other words, in this case, the linearisation \(L\) is already self-adjoint, we no weight is required.
-\end{rem}
-
-In general, the integrand on the last line may be rewritten
-\begin{align*}
-v \tr^2(\dot{F} \otimes \nabla \varphi \otimes \nabla u) + v \varphi \tr^2(\nabla \dot{F} \otimes \nabla u) &= v \tr^2 \left((\dot{F} \otimes \nabla \varphi + \varphi \nabla \dot{F}) \otimes \nabla u\right) \\
-&= v \tr\left((^{\dot{F}} \nabla \varphi + \varphi \tr \nabla \dot{F}) \otimes \nabla u\right).
-\end{align*}
-
-One possibility is that the right hand side vanishes for all \(u, v\). This occurs if and only if,
-\[
-^{\dot{F}} \nabla \varphi + \varphi \tr \nabla \dot{F} = 0.
-\]
-Equivalently,
-\[
-\nabla \ln \varphi = - \tr \left(\dot{F}^{-1} \otimes \tr \nabla \dot{F}\right).
-\]
-In local coordinates, it's
-\[
-\nabla_k \ln \varphi = -\dot{F}^{-1}_{kj} \nabla_i \dot{F}^{ij}.
-\]
-In other words, the one form,
-\[
-\alpha = - \tr \left(\dot{F}^{-1} \otimes \tr \nabla \dot{F}\right) = -\dot{F}^{-1}_{kj} \nabla_i \dot{F}^{ij} dx^k
-\]
-is a co-cycle,
-\[
-\alpha = \nabla \ln \varphi.
-\]
-A necessary condition (but sufficient only in the simply connected case) is that \(\nabla \alpha\) is symmetric. We have,
-\[
-\nabla \alpha (\partial_i, \partial_j) = - \nabla_i(\dot{F}^{-1}_{jk} \nabla_l \dot{F}^{kl}) - \alpha(\nabla_i \partial_j).
-\]
-The second term is symmetric already. For the first term we thus require
-\[
-\nabla_i(\dot{F}^{-1}_{jk} \nabla_l \dot{F}^{kl}) =  \nabla_j(\dot{F}^{-1}_{ik} \nabla_l \dot{F}^{kl}).
-\]
-Computing, we have
-\begin{align*}
-\nabla_i(\dot{F}^{-1}_{jk} \nabla_l \dot{F}^{kl}) &= \nabla_i(\dot{F}^{-1}_{jk} \dot{F}^{kl,pq} \nabla_l h_{pq}) \\
-&= \nabla_i (\dot{F}^{-1}_{jk}) \nabla_l \dot{F}^{lk} + \dot{F}^{-1}_{jk} \nabla_i (\nabla_l \dot{F}^{lk})
-\end{align*}
-
-
-\textbf{Not sure how to swap \(i\) and \(j\) though}. Perhaps the Homogeneous case, where \(\dot{F}^{ij} = b^{ij} F\) could be of interest. Here \(b^{ij}\) is the inverse of the second fundamental form. Of course, this requires \(\mathcal{W}\) to be non-singular, and I don't know likely this is to be true for minimal surface. Equators in spheres for example, are totally geodesic and hence \(\mathcal{W} \equiv 0\)!
-
-Or perhaps, it may be better to write,
-\begin{align*}
-v \tr^2(\dot{F} \otimes \nabla \varphi \otimes \nabla u) + v \varphi \tr^2(\nabla \dot{F} \otimes \nabla u) &= v \tr^2 \left(\nabla (\varphi \dot{F}) \otimes \nabla u\right) \\
-&= \tr^2 \left(\nabla (\varphi \dot{F}) \otimes \nabla (uv)\right) - \tr \left(\dive (\varphi \dot{F}) \otimes u \nabla v\right)
-\end{align*}
-
-The first term is symmetric. As to the second term, we have
-\begin{align*}
-\tr \left(\dive (\varphi \dot{F}) \otimes u \nabla v\right) &= \tr \nabla \tr \left(\varphi \dot{F} \otimes u \nabla v\right) - \tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right) \\
-&= \dive \left(\tr \varphi\dot{F} \otimes u \nabla v\right) - \tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right)
-\end{align*}
-
-The first term integrates to zero, and continuing with the second term,
-\begin{align*}
-\tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right) = \tr^2\left(\varphi \dot{F} \otimes \nabla u \otimes \nabla v\right) + \tr^2\left(\varphi \dot{F} \otimes u \nabla^2 v)\right)
-\end{align*}
-
-On the other hand
-\begin{align*}
-\tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right) &= \tr^2\left(\varphi \dot{F} \otimes \nabla^2(uv)\right) - \tr^2\left(\varphi \dot{F} \otimes \nabla v \otimes \nabla u\right)  - \tr^2\left(\varphi \dot{F} \otimes v \nabla^2 u\right) \\
-&=  \tr^2\left(\varphi \dot{F} \otimes \nabla^2(uv)\right) - \tr^2\left(\varphi \dot{F} \otimes v \nabla^2 u\right) \\
-&\quad -\tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right) + \tr^2\left(\varphi \dot{F} \otimes u \nabla^2 v)\right)
-\end{align*}
-Therefore,
-\[
-\tr^2\left(\varphi \dot{F} \otimes \nabla(u \nabla v)\right) = \frac{1}{2} \tr^2\left[\varphi \dot{F} \otimes \left(\nabla^2(uv) + u \nabla^2 v - v \nabla^2 u\right)\right]
-\]
-
-Writing \(C(u,v)\) for all the symmetric parts, the result would be something like
-\[
-B(u, v) = C(u, v) + \frac{1}{2}\int \tr^2\left[\varphi\dot{F} \otimes \left(u \nabla^2v - v \nabla^2 u\right) \right] = C(u, v) + D(u, v)
-\]
-but where \(D\) is anti-symmetric, so that
-\[
-B(u,v) = C(v,u) - D(v, u) \ne B(v,u).
-\]
-
-\textbf{With this approach I have not tried to use \(\varphi\) anywhere, but I don't see what could be done with it. In the particular case of MCF, choosing \(\varphi \equiv 1\) produces something symmetric, because \(D \equiv 0\). To obtain this, we need to use the fact that \(\dot{F}^{ij} = g^{ij}\) so that \(\nabla \dot{F}^{ij} = 0\) and we can pass the metric contraction through the \(\nabla\) top write the integrand as a divergence. Here we cannot do that, and I suppose the integral will not vanish for general \(F\). The density \(\varphi\) is of no help here at all! Must need to go back to the first approach, and try to solve for \(\varphi\).}
-
-
-\begin{rem}
-Can we obtain the same results for potentials that are semi-concave (\(V(x)\) has bounded below second derivative)? Is semi-concavity important, or do we just need bounded potential \(V\)? See for example \cite[Theorem 6.5.3]{Evans:/1998} which applies to operators of our form, but with \emph{negative} potential (note that Evans takes the convention of e.g. \(L = -\Delta + V\) with \(V \geq 0\) and after multiplying by \(-1\) we get \(L = \Delta - V\)). Our potentials are positive, but is there a trick that allows us to add something to \(u\) or multiply by \(u\) by something to obtain a new equation with \(V \leq 0\)? Then we may apply \cite[Theorem 6.5.3]{Evans:/1998} to discover that the principal eigenvalue is real and simple. The main point about the sign on \(V\) seems to be in showing that if \(Lu = f\) for \(f \geq 0\), then the strong maximum principle applies to show that \(u > 0\).
-
-It appears as though the relevant result goes by the name of the Krein-Rutman theorem. See for example \cite[Appendix C, Chapter 11]{smoller:/1983}. An example is given where the theorem is applied, but again it only applies to negative potentials!
-
-Also, perturbation results in Kato imply that for self-adjoint top term, the addition of the potential does not disturb the fact that the eigenvalues are real and, countable and discrete accumulating at \(\infty\).
-
-These techniques might also be used, by semi-continuity of the spectrum, to show that other speeds close to the Laplacian also have such spectra. For general speeds \(F\), no such results will be available - you get complex eigenvalues, but some vestige may still remain.
-\end{rem}
-
-If some version of the remark above is true, the resulting theorem would then become,
-\begin{thm}[Provisional Theorem]
-Let \(L u = \Box u + V u\) with \(V\) having bounded below second derivative (or perhaps just bounded \(V\)?). Then the principal eigenvalue \(\lambda_1\) is real and simple. That is, there exists a real eigenvalue \(\lambda_1\) for which all other eigenvalues \(\lambda \in \C\) satisfy,
-\[
-\text{Re} \lambda \leq \lambda_1,
-\]
-and the eigenspace associated to \(\lambda_1\) is one-dimensional.
-\end{thm}
-
-
-\section{Minimal and Totally Geodesic Surfaces}
-\label{sec:minimal}
-
-\subsection{Existence and Morse Index}
-\label{subsec:existence_index}
-
-The results in \cite{pitts:/1976,pitts:/1981,pitts:/1983,SchoenSimon:/1981} show tat if \((\bar{M}, \bar{g})\) ensure that there exists closed, minimal hyper-surfaces in \(M\). The regularity theory (Almgran? best get some good refs here!) of minimal surfaces shows that \(M\) is smooth apart from a set of Hausdorff dimension \(\leq n-7\) (some of Pitts result have max dimension 5 or 6 - what's that all about?). In particular if \(\bar{M}\) has dimension no larger than six, there exists a smooth, closed minimal hyper-surface.
-
-A reference for the lack of such in negatively curved spaces would be handy here.
-
-\subsection{Totally Geodesic Hypersurfaces}
-\label{subsec:totally_geodesic}
-
-In symmetric spaces, a standard result says that if \((\bar{M}, \bar{g})\) is an irreducible, symmetric space then there exists a totally geodesic hypersurface \(M\) in \(\bar{M}\) if and only if \((\bar{M}, \bar{g})\) is a space-form (\cite{BenrdtOlmos:/2014} mentions it, but a better ref?). Thus by the previous paragraph, the Harnack inequality cannot hold in an irreducible, symmetric space of non-constant curvature.
-
-There is also another interesting result \cite{BenrdtOlmos:/2014} that says, again in the irreducible case, \(rk(\bar{M}, \bar{g}) \leq i(\bar{M}, \bar{g})\) where \(i\) denotes the least co-dimension for which a totally geodesic submanifold exists, and \(rk\) denotes the rank. This implies that for an irreducible, rank 2 or higher symmetric space, again no totally geodesic hypersurface exists. Not of course, that the result of the previous paragraph is much stronger and already implies the lack of a totally geodesic hypersurface. The two results combined imply that a rank at most one, irreducible, symmetric space that is not a space-form, then no totally geodesic hypersurfaces exist.
-
-Robert Bryant (\url{http://mathoverflow.net/questions/209618/existence-of-totally-geodesic-hypersurfaces}) notes that generically, totally geodesic hypersurfaces do not exist in Riemannian manifolds.
-
-\section{Harnack Inequality}
-\label{sec:harnack}
-
-
-\section{Ancient Solutions}
-\label{sec:ancient_solutions}
-
-\subsection{Smooth, Backwards Limits}
-\label{subsec:smooth_backwards_limits}
-
-\subsubsection{Existence of Ancient Solutions}
-\label{subsubsec:smooth_ancient_existence}
-
-Next, we have some theorems regarding the linear stability of fixed points of the flow. Let \(M_{-\infty} = F_{-\infty}(M)\) denote a smooth, fixed point of the flow.
-
-\begin{thm}
-The flow admits a non-static ancient solution \(M_t\) with \(M_t \to M_{-\infty}\) (in some appropriate topology, at least something like \(h^{1+\alpha}\) - just anything better than \(C^1\) probably) if and only if
-\[
-\sup \{\text{Re}\lambda \in \sigma(L)\} > 0.
-\]
-\end{thm}
-
-\begin{rem}
-In the proof that follows we need to use that solutions close to \(M_{-\infty}\) are contained in the centre manifold. What conditions are required here?
-\end{rem}
-
-\begin{proof}
-\cite[Theorem 9.1.3]{lunardi2012analytic} asserts that if \(\sup \{\text{Re}\lambda \in \sigma(L)\} > 0\), and \(\omega_+ > 0\) then there exists a non-static ancient solution with \(M_t \to M_{-\infty}\). For the operators we consider, the eigenvalues are discrete hence \(\omega_+ > 0\).
-
-On the other hand, if such a solution exists, then there is \(t_0 < 0\) such that \(M_t\) lies in the unstable-centre manifold for \(t \leq t_0\) (is this \cite[Theorem 9.1.4]{lunardi2012analytic}?). But if \(\sigma_+ = \emptyset\), then \(M_{-\infty}\) is linearly stable which implies in particular that for any neighbourhood, since there is a \(t_0\) such \(M_t\) lies in this neighbourhood for \(t \leq t_0\), it remains in this neighbourhood for all \(t \geq t_0\). Thus \(M_t\) lies in every neighbourhood of \(M_{-\infty}\) and hence \(M_t = M_{-\infty}\) for all \(t\) - a contradiction (this can probably be rephrased without a contradiction argument).
-
-\end{proof}
-
-\subsubsection{Uniqueness of Ancient Solutions}
-\label{subsubsec:smooth_ancient_uniqueness}
-
-\begin{thm}
-Suppose that there is a unique eigenvalue with \(\text{Re} \lambda_1 > 0\). Then, up to choosing a side of \(M_{-\infty}\), there exists a unique ancient solution converging backwards to \(M_{-\infty}\). 
-\end{thm}
-
-\begin{proof}
-\cite[Theorem 9.1.3]{lunardi2012analytic} assures us that there exists at least one non-static ancient solution \(z(t)\) limiting back to \(M_0\) (i.e. \(z \to 0\) as \(t \to -\infty\)). Denote by \(P : X \to V_1\) the projection of our function space \(X\) onto the eigenspace associated to \(\lambda_1\) which is one-dimensional by the theorems above. Let \(z_0^+\) be any basis for \(V_1\) with \(z_0^+ > 0\) (by the theorems above about the first eigenfunction) and \(z_0^- < 0\) also a basis. Then in fact, the proof of \cite[Theorem 9.1.3]{lunardi2012analytic} assures us of at least two ancient solutions \(z^{\pm}\) limiting back to \(0\) with \(\pm z^{\pm} > 0\).
-
-Write \(P z^{\pm}(t) = c(t) z_0^{\pm}\) with \(c \to 0\) as \(t \to -\infty\). Since \(0\) is a barrier for the flow and \(c(t) z_0^{\pm}\) is either strictly positive or strictly negative, we may assume \(c > 0\). Continuity then implies that \(c\) maps onto \((0, \epsilon)\) for some \(\epsilon > 0\).
-
-Thus if \(v(t)\) is any other ancient solution limiting back to \(0\), then there exists \(t_0,t_1\) with \(P v(t_0) = \pm d_0 z_0 = P z(t_1)\), \(0 < d_0 < \epsilon\) for either \(z_0 = z_0^+, z = z^+\) or \(z_0 = z_0^-, z = z^-\). Thus both \(z\) and \(y\) satisfy the same equation with the same projected initial conditions (up to time shift) and hence agree by the uniqueness as in the proof of \cite[Theorem 9.1.3]{lunardi2012analytic}.
-\end{proof}
-
-\begin{defn}
-Let us call a solution \(F\)-convex if \(F > 0\) along the flow.
-\end{defn}
-
-\begin{thm}
-Suppose
-\[
-\sup \{\text{Re}\lambda \in \sigma(L)\} > 0.
-\]
-Then, up to choosing a side, there exists a unique \(F\)-convex, ancient solution emanating from \(M_{-\infty}\).
-\end{thm}
-
-\begin{proof}
-If there is an \(F\)-convex, ancient solution, then \(F > 0\) implies that the flow is monotone. \textbf{Some argument is now required to show the flow lies in the eigenspace of the first eigenvalue}. The idea is to show that since the first eigenspace is simple and the eigenfunction is positive, this eigenspace is the most unstable. A monotone flow (which also has positive flow) must somehow lie in this eigenspace. Another approach would be to try show that the velocity vector field lies is a multiple of the first eigenfunction more directly.
-
-Conversely, corresponding to the first eigenvalue, there is a positive eigenfunction. The corresponding flow must then be monotone, hence is \(F\)-convex.
-\end{proof}
-
-An interesting question here is whether there are any convex, ancient solutions. That is, can we strengthen mean convexity to convexity? On the sphere for example, if \(M_{-\infty}\) is a Clifford Torus, the answer is no. But the answer is yes for equators and these are the unique, convex, ancient solutions.
-
-\subsection{Lower Regularity Backwards Limits}
-\label{subsection:nonsmooth_backwards_limits}
-
-In general, we may only assert the existence of a minimal surface, smooth away from a Hausdorff co-dimension \(7\) set.
-
-The previous results, may well apply in this case. There are essentially two approaches possible here (maybe more?).
-
-Approach one is to work with functions, compactly supported on the smooth part, \(\Sigma\). In particular, there exists a family \(\eta_{\epsilon} \in C^{\infty}_0\) of smooth functions, compactly supported in the smooth part such that
-\[
-\lim_{\epsilon \to 0} \|\eta_{\epsilon}\|_{W^{1,2}_0(\Sigma)} \to |\Sigma|.
-\]
-Actually, it's stronger than this. I think \(\eta_{\epsilon}\) converges pointwise a.e. to the characteristic function and the gradient goes to zero. Could be \(L^1\) norms though.
-
-These may be used in place of constant functions, to show for example that in positive Ricci backgrounds, such minimal surfaces are unstable and hence we obtain the existence of ancient solutions.
-
-The principal difficulty here is to show properties of the linearised operator necessary for the stability analysis. For example, we need our operator to be sectorial on \(W^{1,2}_0\) or perhaps it's intersection with little H\"older spaces, or perhaps the closure of \(C^{\infty}_0\) in the little H\"older spaces (is that the same thing?). This ensures for example, that the semi-group is well defined, an essential ingredient in all the proofs.
-
-Approach two is to use the idea of the foliation of \(\R^8\) by minimal surfaces, with exactly one singular leaf - the minimal Simons' cone. So locally near a singularity we may have something similar and perhaps we can do some perturbation to remove the singularity. Perhaps a perturbation by the curvature flow (if we can find a monotone one!) will provide a similar (not minimal though) foliation, through we which we may study the singularity. Then presumably, we would need to pass to a limit along the foliation.
-
-Either way however, one needs to understand the singularity somehow and show that we can deal with it.
-
-These thoughts might prove useful in studying the possibility of ancient solutions with non-smooth backwards limits. For example, in a compact background, we have Hausdorff distance compactness and so always obtain a unique backwards limit when the flow is monotone (\(F\)-convex). In certain situations, like MCF, it may be possible to obtain higher regularity of backwards limits to show they are smooth. In fact, all that is required in the sphere for general flows, is that the mean curvature is bounded and then the flow is by geodesic spheres. So questions here are whether there exists low regularity minimal surfaces in the sphere and whether these can arise as backwards limits of convex flows.
-
-If the flow is not \(F\)-convex we still get sub-sequential limits, but I don't know if these are necessarily unique.
-
-\subsection{Examples}
-\label{subsec:minimal_examples}
-
-Equator example
-
-Clifford torus example.
-
-\section{Applications}
-\label{sec:applications}
-
-\subsection{Applications to Totally Geodesic Submanifolds}
-\label{subsec:applications_totally_geodesic}
-
-Suppose a convex, ancient solution \(M_t\) exists and the Harnack inequality holds. The Harnack implies that \(H \to 0\) as \(t \to -\infty\), and since \(0 < |A|^2 \leq H^2\) we find that \(A \to 0\) as \(t \to -\infty\). Now apply bootstrapping arguments to show that in fact \(A \to 0\) smoothly and that \(M_t \to M_{-\infty}\) a smooth, closed, totally geodesic hypersurface.
-
-Thus if we can prove a Harnack inequality, and the existence of convex, ancient solutions, we obtain the existence of closed, totally geodesic hypersurfaces.
-
-Conversely, if a closed, totally geodesic hypersurface exists, does there exist a convex, ancient solution emanating from it?
-
-These considerations should be tempered by the discussion of the existence of totally geodesic hypersurfaces above. They generically \textbf{do not exist!}.
-
-\section{Linearising Immersions}
-\label{sec:linearising_immersions}
-
-The typical approach here seems to be as follows: Let \(M \subset \bar{M}\) be a hypersurface (what about higher co-dimension?) and consider graphs
-\[
-M_f = \{\exp_x(f(x)\nu(x) : x \in M\}
-\]
-where the exponential map is the ambient exponential map. Now the center manifold is a sub-manifold of \(C^{\infty}(M, \R)\) - or perhaps rather on some suitable, less-regular space such as little H\"older spaces. Little H\"older norms and so forth are defined on this space and \(M\) corresponds to the zero graph.
-
-Suppose instead we took the parametric approach. Let
-\[
-F_0 : M \to \bar{M}
-\]
-be an immersion. Replace \(C^{\infty}(M, \R)\) with \(C^{\infty} (M, \bar{M})\). The \(C^0\) topology is induced by Haussdorf distance - we have a sort of a norm here
-\[
-|F(x)| = d(F_0(x), F(x)).
-\]
-It's not a norm because we can't add $F_1 + F_2$. Is this a major issue?
-
-We do have norms on higher derivatives,
-\[
-|\nabla^k F (x)| = |\nabla^k F(x) - \nabla^k F_0(x)|
-\]
-Does this make sense? What exactly do I mean by \(\nabla^k\)? 
-
-We can integrate and so forth to obtain \(L^p\) norms, including \(L^{\infty}\). Not sure about H\"older norms. 
-
-I see now what I'm doing. This makes sense in the context of uniform spaces. This is the same as for Nash-Moser Theorem. I can't remember my history now, but I recall the idea there is similar that you're not working with a vector space but the required technical tools such as inverse function theorem carry over to this setting. See Hamilton's paper on this for details (if I recall correctly). Is this too much machinery just to avoid working with graphs? I'm always suspicious of graphs as being too restrictive.
-
-The upshot is I would like to know if the general theory on \(C^{\infty}(M, \R)\) (or whatever appropriate weaker function space) may be carried over to maps \(F : M \to \bar{M}\) instead. this includes the graph case by
-\[
-F(x) = \exp_{F_0(x)} (f(x) \nu_0(x)).
-\]
-
-There are plenty of good functional properties of these uniform spaces and I think a lot of the required functional analysis carries over to this setting. Perhaps this approach is for another day though when I have the energy to work it all out. Especially since \(F\) being \(C^1\) close to \(F_0\) is any reasonable sense probably means that \(F\) can be written as a graph over \(F_0\) as above anyway!
-
-\bibliographystyle{amsplain}
-\bibliography{Bibliography.bib}
 \end{document}
