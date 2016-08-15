@@ -27,25 +27,35 @@
 
 Let \(\bar{M}^{n+1}, \bar{g}\) be a compact Riemannian manifold with \(\bar{\ric} > 0\). A closed, embedded, ancient solution to the Mean Curvature Flow (MCF) is given by a smooth, one-parameter family of embeddings,
 \[
-F : M \times (-\infty, 0) \to \bar{M}
+F : M \times (-\infty, T) \to \bar{M}
 \]
 with \(M\) a closed manifold, and satisfying
 \begin{equation}
 \label{eq:mcf}
 F_{\ast} \partial_t = \vec{H} = -H\nu
 \end{equation}
-where \(\vec{H}\) denotes the Mean Curvature Vector Field, \(\nu\) is a choice of smooth, unit, normal vector field and \(H\) is the Mean Curvature with respect to \(\nu\): \(H = \Tr \weingarten\) with \(\weingarten (X) = -F_{\ast}^{-1} \bar{\nabla}_{F_{\ast} X} \nu\).
+where \(\vec{H}\) denotes the Mean Curvature Vector Field, \(\nu\) is a choice of smooth, unit, normal vector field and \(H\) is the Mean Curvature with respect to \(\nu\): \(H = \Tr \weingarten\) with \(\weingarten (X) = -F_{\ast}^{-1} \bar{\nabla}_{F_{\ast} X} \nu\). Note also that we allow \(T = \infty\) so that any closed, minimal surface is a (static), ancient solution.
 
 Let us write \(M_t = F_t(M)\), \(F_t (\cdot) = F(\cdot, t)\) and \(g = g_t = F^{\ast} \bar{g}\). We say that \(M_t\) is convex if for a choice of normal \(\nu\) we have \(A_t>0\) where
 \[
 A_t (X, Y) = g_t (\bar{\nabla}_{F_{\ast} X} F_{\ast} Y, \nu) = g_t(\weingarten(X), Y)
 \]
-is the second fundamental form with respect to \(\nu\) and \(\bar{\nabla}\) denotes the Levi-Civita connection for \(\bar{g}\) and \(A_t > 0\) means that \(A_t(X, X) > 0\) for all non-zero tangent vectors \(X\). We say that \(M_t\) is mean convex if only \(H > 0\) which is clearly implied by convexity, but not conversely.
+is the second fundamental form with respect to \(\nu\) and \(\bar{\nabla}\) denotes the Levi-Civita connection for \(\bar{g}\) and \(A_t > 0\) means that \(A_t(X, X) > 0\) for all non-zero tangent vectors \(X\). We say that \(M_t\) is mean-convex if only \(H > 0\) which is clearly implied by convexity, but not conversely.
+
+An important tool we employ to study ancient solutions is the principle of linearised stablity. Let \(M_0 \subset \bar{M}\) be a closed, smooth, two-sided, minimal hypersurface. Then \(M_0\) is a fixed point for the flow \eqref{eq:mcf}. In this instance, we work only with smooth minimal hypersurfaces. By \cite{pitts:/1983}, the existence of smooth, closed minimal surfaces is assured up to dimenion six. Of course, smooth, closed minimal hypersurfaces may exist in higher dimensions also (e.g. equators in spheres) and our results also apply to such minimal hypersurfaces.
+
+Let \(X = h^{2,\alpha}(M_0)\) be the little \holder{} space, which by definition is the completion of \(C^{\infty}(M_0)\) with respect to the \holder{} norm \(\|\cdot\|_{2,\alpha}\) in the \holder{} space \(C^{2,\alpha}(M)\). Such spaces enjoy a self-interpolation property crucial to our study \cite[Equation 19]{guenther2002stability}. We consider ancient solutions of \eqref{eq:mcf} that are normal graphs,
+\[
+F(x, t) = \exp(u(x, t) \nu_0(x)), \quad x \in M_0
+\]
+where \(\exp\) is the exponential map on \(\bar{M}\) and \(\nu_0\) is a smooth unit normal field along \(M_0\) and \(u \in C^1((-\infty, 0), X)\). Note that \(u \equiv 0\) is just \(M_0\). A simple application of the principle of linearized stability recorded in \Cref{thm:ancient_existence} shows that there do exist such ancient normal graph solutions to \eqref{eq:mcf} converging exponential to \(M_0\) as \(t \to - \infty\). This is just a consequence of the fact that in positive Ricci curvature backgrounds, all minimal hypersurfaces are unstable. Moreover, in \Cref{thm:ancient_meanconvex_uniqueness} we show that amongst such ancient solutions, there exists a unique, mean-convex one. Such a solution provides a foliation of \(\bar{M}\) in a neighbourhood of \(M_0\).
+
+The above discussion raises the question of whether every ancient solution must emanate from a closed minimal hypersurface. That is, if \(M_t\) is an ancient solution, does it converge to a minimal hypersurface as \(t \to -\infty\)? By making use of the Harnack inequality, in \Cref{sec:harnack_backwards}, we prove that any ancient, convex solution does indeed converge backwards to a minimal hypersurface. This minimal hypersurface is in fact totally geodesic and any convex, ancient solution is also totally geodeisc and in particular has constant mean curvature. Thus in particular, a totally geodesic, closed hypersurface \(M_0\) exists in \(\bar{M}\) if and only if a convex, ancient solution exists. Moreover, in the case of existence, a neighbourhood of \(M_0\) is foliated by totally geodesic hypersurfaces.
 
 \section{Linearisation and Stability}
 \label{sec:linearising_linearisation}
 
-In this section we consider the linearisation of the flow \eqref{eq:mcf} of graphs \(u : M_0 \to \R\) over a hypersurface \(M_0\). Arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
+In this section we consider the linearisation of the flow \eqref{eq:mcf} of normal graphs \(u \in X\) over a closed, minimal hypersurface \(M_0\). Arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
 \begin{equation}
 \label{eq:linearisation}
 -L u = \Delta u + \left(\overline{\ric}(\nu_0) + |\mathcal{W}|^2\right) u
@@ -81,6 +91,7 @@ The index form is of course, precisely the index form for the area functional of
 The instability of minimal surfaces \(M_0\) implies the existence of ancient solutions limiting backwards to \(M_0\). Note that \(M_0\) is a fixed point of the flow \eqref{eq:mcf}.
 
 \begin{thm}
+\label{thm:ancient_existence}
 The flow \eqref{eq:mcf} admits a non-static ancient solution \(M_t\) with \(M_t \to M_{-\infty}\) exponentially fast (in some appropriate topology, at least something like \(h^{1+\alpha}\) - just anything better than \(C^1\) probably).
 \end{thm}
 
@@ -88,14 +99,31 @@ The flow \eqref{eq:mcf} admits a non-static ancient solution \(M_t\) with \(M_t 
 \cite[Theorem 9.1.3]{lunardi2012analytic} asserts that if \(\sup \{\text{Re}\lambda : \lambda \in \sigma(L)\} < 0\), and \(\sup\{\text{Re} \lambda : \lambda \in \sigma(L), \text{Re} \lambda < 0\} < 0\), then there exists non-static, ancient solutions with \(M_t \to M_{-\infty}\). Note that \cite{lunardi2012analytic} uses the convention \(L = \Delta - V\) and so the inequalities there are reversed. Since the eigenvalues of \(L\) are discrete, \(0\) is not an accumulation point, and \(\lambda_1 < 0\), these requirements are satisfied.
 \end{proof}
 
+In general, all ancient solutions emanating from \(M_0\) are contained the in the center-unstable manifold,
 \[
-\sigma_{\pm} (L) = \{\lambda \in \sigma(L) : \pm \text{Re}(\lambda) > 0\}
+\{\Gamma (u) : L u \leq 0\}
 \]
-and
-\begin{align*}
-\omega_+ &= \inf \{\text{Re} \lambda : \lambda \in \sigma_+\} \\
-- \omega_- &= \sup \{\text{Re} \lambda : \lambda \in \sigma_-\}.
-\end{align*}
+where \(\Gamma\) is a graph. In particular, null eigenfunctions (\(L u = 0\)) correspond to static solutions \(u \equiv 0\) is \(M_0\) itself), and a linear combinations \(a u + b v\) with \(L u = 0\), \(L v < 0\) corresponds to ancient solutions emanating from the static solution \(M_u = \Gamma(u)\). Thus in particular, the ancient solutions emanating from \(M_0\) (\(u \equiv 0\)) correspond to \(\{\Gamma(\sum a_i v_i) : Lv_i < 0\}\) and if the space \(\{v : L v < 0\}\) has dimension greater than one, there are many such solutions. Since the first eigenvalue is simple, we do however, have the following uniqueness result.
+
+\begin{thm}
+\label{thm:ancient_meanconvex_uniqueness}
+There exists a unique, mean-convex, ancient solution emanating from \(M_0\).
+\end{thm}
+
+\begin{proof}
+Mean-Convexity corresponds to positivity of the corresponding eigenfunction which is unique since \(\lambda_1\) is simple, and orthogonality of eigenfunctions implies all other eigenfunctions must change sign.
+\end{proof}
+
+\begin{thm}
+If \(M_0\) is totally geodesic, then the convex, ancient solution \(M_t\) emenating from \(M_0\) is totally geodesic for all \(t \in (-\infty, T)\).
+\end{thm}
+
+\begin{proof}
+The symmetry \(\nabla A \equiv 0\) is preserved.
+\end{proof}
+
+\section{The Harnack Inequality and Backwards Convergence}
+\label{sec:harnack_backwards}
 
 \printbibliography
 
