@@ -99,15 +99,33 @@ The flow \eqref{eq:mcf} admits a non-static ancient solution \(M_t\) with \(M_t 
 \cite[Theorem 9.1.3]{lunardi2012analytic} asserts that if \(\sup \{\text{Re}\lambda : \lambda \in \sigma(L)\} < 0\), and \(\sup\{\text{Re} \lambda : \lambda \in \sigma(L), \text{Re} \lambda < 0\} < 0\), then there exists non-static, ancient solutions with \(M_t \to M_{-\infty}\). Note that \cite{lunardi2012analytic} uses the convention \(L = \Delta - V\) and so the inequalities there are reversed. Since the eigenvalues of \(L\) are discrete, \(0\) is not an accumulation point, and \(\lambda_1 < 0\), these requirements are satisfied.
 \end{proof}
 
-In general, all ancient solutions emanating from \(M_0\) are contained the in the center-unstable manifold,
+\textbf{Some of this is a little shakey}
+
+Actually, much more is known about solutions near \(M_0\). Let 
 \[
-\{\Gamma (u) : L u \leq 0\}
+\sigma^+ = \{\lambda \in \sigma : \lambda > 0\}, \quad \sigma^- = \{\lambda \in \sigma : \lambda < 0\}, \sigma^0 = \sigma \cap \{0\}.
 \]
-where \(\Gamma\) is a graph. In particular, null eigenfunctions (\(L u = 0\)) correspond to static solutions \(u \equiv 0\) is \(M_0\) itself), and a linear combinations \(a u + b v\) with \(L u = 0\), \(L v < 0\) corresponds to ancient solutions emanating from the static solution \(M_u = \Gamma(u)\). Thus in particular, the ancient solutions emanating from \(M_0\) (\(u \equiv 0\)) correspond to \(\{\Gamma(\sum a_i v_i) : Lv_i < 0\}\) and if the space \(\{v : L v < 0\}\) has dimension greater than one, there are many such solutions. Since the first eigenvalue is simple, we do however, have the following uniqueness result.
+Then \(\sigma^-\) is a non-empty set consisting of a finite number of eigenvalues, \(\lambda_1 < \lambda_2 < \cdots \leq \lambda_k < 0\) with finite algebraic multiplicity. Let \(P: X \to X\) be the projection associated with the spectral set \(\sigma^- \cup \sigma^0\), which in this case is the \(L^2\)-orthogonal projection
+\[
+P : X \to E_{\sigma^+} = \{u \in X : L(u) = \lambda u \text{ for some \} \lambda \in \sigma^+}\}.
+\]
+As in \cite[Theorem 9.1.4]{lunardi2012analytic}, there exists an \(R_0 \geq 0\) and a Lipschitz continuous function, \(\Gamma : B_{R_0}(X) \subset P(X) \to (\operatorname{Id} - P)(X)\) such that
+\[
+\mathcal{M} = \{\Gamma(u) : u \in B_{R_0}(0)\}
+\]
+has the following properties:
+\begin{enumerate}
+\item For every \(u_0 \in \mathcal{M}\), there exists a unique ancient solution \(u\) such that \(\lim_{t\to-\infty} \|u\| = 0\) and \(u(0) = u_0\),
+\item if \(u\) is an ancient solution such that \(\|u\| \leq R_0\), and \(\partial_t u \notequiv 0\), then \(u \in \mathcal{M}\).
+\end{enumerate}
+
+The graph \(\mathcal{M}\) is known as the \emph{unstable manifold}. It is invariant under the flow \eqref{eq:mcf} in the sense that if \(u_0 \in \mathcal{M}\) and \(u(t)\) is the solution of \eqref{eq:mcf} with \(u(0) = u_0\), then \(u(t) \in \mathcal{M}\). Thus \(\mathcal{M}\) contains all non-static, ancient solutions emenating from \(M_0\).
+
+Since \(E_{\sigma^+}\) is non-empty, as noted in \Cref{thm:ancient_existence}, ancient solutions emenating from \(M_0\) certainly exist. The previous discussion shows that these ancient solutions are precisely the finite dimensional manifold \(\mathcal{M}\). Since the first eigenvalue is simple, we have the following uniqueness result.
 
 \begin{thm}
 \label{thm:ancient_meanconvex_uniqueness}
-There exists a unique, mean-convex, ancient solution emanating from \(M_0\).
+There exists a unique, mean-convex, ancient solution emanating from \(M_0\). In particular, if \(M_0\) is an index one minimal surface, then there is a unique, ancient solution emanating from \(M_0\) and this solution is mean-convex.
 \end{thm}
 
 \begin{proof}
