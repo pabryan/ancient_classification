@@ -48,7 +48,14 @@ Let \(X = h^{2,\alpha}(M_0)\) be the little \holder{} space, which by definition
 \[
 F(x, t) = \exp(u(x, t) \nu_0(x)), \quad x \in M_0
 \]
-where \(\exp\) is the exponential map on \(\bar{M}\) and \(\nu_0\) is a smooth unit normal field along \(M_0\) and \(u \in C^1((-\infty, 0), X)\). Note that \(u \equiv 0\) is just \(M_0\). A simple application of the principle of linearized stability recorded in \Cref{thm:ancient_existence} shows that there do exist such ancient normal graph solutions to \eqref{eq:mcf} converging exponential to \(M_0\) as \(t \to - \infty\). This is just a consequence of the fact that in positive Ricci curvature backgrounds, all minimal hypersurfaces are unstable. Moreover, in \Cref{thm:ancient_meanconvex_uniqueness} we show that amongst such ancient solutions, there exists a unique, mean-convex one. Such a solution provides a foliation of \(\bar{M}\) in a neighbourhood of \(M_0\).
+where \(\exp\) is the exponential map on \(\bar{M}\) and \(\nu_0\) is a smooth unit normal field along \(M_0\) and \(u \in C^1((-\infty, 0), X)\). We have that \(F\) is a solution of \eqref{eq:mcf} if and only if \(u\) solves,
+\begin{equation}
+\label{eq:graph_mcf}
+\partial_t u = \sqrt{1 + |\grad u|^2} \div\left(\frac{\grad u}{\sqrt{1 + |\grad u|^2}}\right)
+\end{equation}
+where \(|\cdot|\) is induced by the metric along \(M_t\) pulled back to \(M_0\) and gradients are also taken with respect to this metric.
+
+Note that \(u \equiv 0\) is just \(M_0\). A simple application of the principle of linearized stability recorded in \Cref{thm:ancient_existence} shows that there do exist such ancient normal graph solutions to \eqref{eq:mcf} converging exponential to \(M_0\) as \(t \to - \infty\). This is just a consequence of the fact that in positive Ricci curvature backgrounds, all minimal hypersurfaces are unstable. Moreover, in \Cref{thm:ancient_meanconvex_uniqueness} we show that amongst such ancient solutions, there exists a unique, mean-convex one. Such a solution provides a foliation of \(\bar{M}\) in a neighbourhood of \(M_0\).
 
 The above discussion raises the question of whether every ancient solution must emanate from a closed minimal hypersurface. That is, if \(M_t\) is an ancient solution, does it converge to a minimal hypersurface as \(t \to -\infty\)? By making use of the Harnack inequality, in \Cref{sec:harnack_backwards}, we prove that any ancient, convex solution does indeed converge backwards to a minimal hypersurface. This minimal hypersurface is in fact totally geodesic and any convex, ancient solution is also totally geodeisc and in particular has constant mean curvature. Thus in particular, a totally geodesic, closed hypersurface \(M_0\) exists in \(\bar{M}\) if and only if a convex, ancient solution exists. Moreover, in the case of existence, a neighbourhood of \(M_0\) is foliated by totally geodesic hypersurfaces.
 
