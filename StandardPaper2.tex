@@ -22,7 +22,6 @@
 
 \usepackage{graphicx}
 
-\swapnumbers
 \declaretheorem[name=Theorem,numberwithin=section]{thm}
 \declaretheorem[name=Remark,style=remark,sibling=thm]{rem}
 \declaretheorem[name=Lemma,sibling=thm]{lemma}
@@ -31,6 +30,7 @@
 \declaretheorem[name=Corollary,sibling=thm]{cor}
 \declaretheorem[name=Assumption,style=remark,sibling=thm]{ass}
 \declaretheorem[name=Example,style=remark,sibling=thm]{example}
+\declaretheorem[name=Conjecture,sibling=thm]{conj}
 
 
 \numberwithin{equation}{section}
@@ -45,6 +45,7 @@
 \crefname{rem}{Remark}{Remarks}
 \crefname{ass}{Assumption}{Assumptions}
 \crefname{not}{Notation}{Notation}
+\crefname{conj}{Conjecture}{Conjectures}
 
 %Symbols
 \renewcommand{\~}{\tilde}
@@ -112,6 +113,7 @@
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\loc}{loc}
 \DeclareMathOperator{\grad}{grad}
+\renewcommand{\div}{\operatorname{div}}
 \DeclareMathOperator{\ric}{Ric}
 \DeclareMathOperator{\Rm}{Rm}
 \DeclareMathOperator{\weingarten}{\mathcal{W}}

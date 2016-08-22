@@ -62,12 +62,12 @@ The above discussion raises the question of whether every ancient solution must 
 \section{Linearisation and Stability}
 \label{sec:linearising_linearisation}
 
-In this section we consider the linearisation of the flow \eqref{eq:mcf} of normal graphs \(u \in X\) over a closed, minimal hypersurface \(M_0\). Arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
+In this section we consider the linearisation of the flow \eqref{eq:graph_mcf} of normal graphs \(u \in X\) over a closed, minimal hypersurface \(M_0\). Arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
 \begin{equation}
 \label{eq:linearisation}
 -L u = \Delta u + \left(\overline{\ric}(\nu_0) + |\mathcal{W}|^2\right) u
 \end{equation}
-where derivatives and norms are computed with respect to the metric \(g_0 = X_0^{\ast} \bar{g}\) induced on \(M_0 = X_0(M)\), and Levi-Civita connection \(\nabla_0\), \(\nu_0\) denotes a smooth choice of unit normal along \(M_0\), and \(\bar{\ric}\) denotes the Ricci curvature of the ambient metric \(\bar{g}\).
+where derivatives and norms are computed with respect to the metric \(g_0 = F_0^{\ast} \bar{g}\) induced on \(M_0 = X_0(M)\), and Levi-Civita connection \(\nabla_0\), \(\nu_0\) denotes a smooth choice of unit normal along \(M_0\), and \(\bar{\ric}\) denotes the Ricci curvature of the ambient metric \(\bar{g}\).
 
 For convenience, let us set
 \[
@@ -102,33 +102,38 @@ The instability of minimal surfaces \(M_0\) implies the existence of ancient sol
 The flow \eqref{eq:mcf} admits a non-static ancient solution \(M_t\) with \(M_t \to M_{-\infty}\) exponentially fast (in some appropriate topology, at least something like \(h^{1+\alpha}\) - just anything better than \(C^1\) probably).
 \end{thm}
 
+\begin{rem}
+In the proof, note that we use \(L = -\Delta - V\), whereas \cite{lunardi2012analytic} uses the convention \(L = \Delta + V\). Thus the negative real part of the spectrum \(\{\lambda \in \sigma : \text{Re} \lambda < 0\}\) used here corresponds to the positive part of the specturm \(\{\lambda \in \sigma : \text{Re} \lambda > 0\}\) in \cite{lunardi2012analytic}.
+\end{rem}
+
 \begin{proof}
-\cite[Theorem 9.1.3]{lunardi2012analytic} asserts that if \(\sup \{\text{Re}\lambda : \lambda \in \sigma(L)\} < 0\), and \(\sup\{\text{Re} \lambda : \lambda \in \sigma(L), \text{Re} \lambda < 0\} < 0\), then there exists non-static, ancient solutions with \(M_t \to M_{-\infty}\). Note that \cite{lunardi2012analytic} uses the convention \(L = \Delta - V\) and so the inequalities there are reversed. Since the eigenvalues of \(L\) are discrete, \(0\) is not an accumulation point, and \(\lambda_1 < 0\), these requirements are satisfied.
+\cite[Theorem 9.1.3]{lunardi2012analytic} asserts that if \(\sup \{\text{Re}\lambda : \lambda \in \sigma(L)\} < 0\), and \(\sup\{\text{Re} \lambda : \lambda \in \sigma(L), \text{Re} \lambda < 0\} < 0\), then there exists non-static, ancient solutions with \(M_t \to M_{-\infty}\) exponentially fast in \(h^{2,\alpha}\). Since the eigenvalues of \(L\) are discrete, \(0\) is not an accumulation point and \(\lambda_1 < 0\), these requirements are satisfied.
 \end{proof}
 
-\textbf{Some of this is a little shakey}
+Actually, much more is known about solutions near \(M_0\). There exists a finite dimensional \emph{unstable-center manifold}, consisting of nearby ancient solutions (including static ones), which exponentially attracts all other nearby solutions. Let us recall the construction.
 
-Actually, much more is known about solutions near \(M_0\). Let 
+Write,
 \[
-\sigma^+ = \{\lambda \in \sigma : \lambda > 0\}, \quad \sigma^- = \{\lambda \in \sigma : \lambda < 0\}, \sigma^0 = \sigma \cap \{0\}.
+\sigma^- = \{\lambda \in \sigma : \lambda \leq 0\}.
 \]
-Then \(\sigma^-\) is a non-empty set consisting of a finite number of eigenvalues, \(\lambda_1 < \lambda_2 < \cdots \leq \lambda_k < 0\) with finite algebraic multiplicity. Let \(P: X \to X\) be the projection associated with the spectral set \(\sigma^- \cup \sigma^0\), which in this case is the \(L^2\)-orthogonal projection
+Then \(\sigma^-\) is a non-empty spectral set consisting of a finite number of eigenvalues, \(\lambda_1 < \lambda_2 < \cdots \leq \lambda_k \leq 0\) with finite algebraic multiplicity. Let \(P: X \to X\) be the projection associated with the spectral set \(\sigma^-\), which in this case is the \(L^2\)-orthogonal projection
 \[
-P : X \to E_{\sigma^+} = \{u \in X : L(u) = \lambda u \text{ for some } \lambda \in \sigma^+\}.
+P : X \to N^- = \{u \in X : L(u) = \lambda u \text{ for some } \lambda \in \sigma^-\}.
 \]
-As in \cite[Theorem 9.1.4]{lunardi2012analytic}, there exists an \(R_0 \geq 0\) and a Lipschitz continuous function, \(\Gamma : B_{R_0}(X) \subset P(X) \to (\operatorname{Id} - P)(X)\) such that
+As in \cite[Theorem 4.1]{Simonett:/1995} (see also \cite[Theorem 9.2.2]{lunardi2012analytic}), there exists an \(R_1 \geq 0\) and a Lipschitz continuous function, \(\Gamma : B_{R_1}(X) \subset P(X) \to (\operatorname{Id} - P)(X)\) such that
 \[
-\mathcal{M} = \{\Gamma(u) : u \in B_{R_0}(0)\}
+\mathcal{M} = \{\Gamma(u) : u \in B_{R_1}(0)\}
 \]
 has the following properties:
 \begin{enumerate}
 \item For every \(u_0 \in \mathcal{M}\), there exists a unique ancient solution \(u\) such that \(\lim_{t\to-\infty} \|u\| = 0\) and \(u(0) = u_0\),
-\item if \(u\) is an ancient solution such that \(\|u\| \leq R_0\), and \(\partial_t u \not\equiv 0\), then \(u \in \mathcal{M}\).
+\item if \(u\) is an ancient solution such that \(\|u\| \leq R_1\), and \(\partial_t u \not\equiv 0\), then \(u \in \mathcal{M}\),
+\item for each \(k \in \N\), there exists \(R_k > 0\) such that \(\Gamma \in C^{k-1,1}\) on \(B_{R_k}(0)\).
 \end{enumerate}
 
-The graph \(\mathcal{M}\) is known as the \emph{unstable manifold}. It is invariant under the flow \eqref{eq:mcf} in the sense that if \(u_0 \in \mathcal{M}\) and \(u(t)\) is the solution of \eqref{eq:mcf} with \(u(0) = u_0\), then \(u(t) \in \mathcal{M}\). Thus \(\mathcal{M}\) contains all non-static, ancient solutions emanating from \(M_0\).
+The graph \(\mathcal{M}\) is known as the \emph{unstable manifold}. It is invariant under the flow \eqref{eq:mcf} in the sense that if \(u_0 \in \mathcal{M}\) and \(u(t)\) is the solution of \eqref{eq:mcf} with \(u(0) = u_0\), then \(u(t) \in \mathcal{M}\) provided \(\|u\| \leq R_1\). Thus \(\mathcal{M}\) contains all ancient solutions emanating from \(M_0\); \(\Gamma(\{u : Lu = 0\})\) is comprised of static solutions, while \(\Gamma(\{u : Lu < 0\})\) is comprised of non-static solutions.
 
-Since \(E_{\sigma^+}\) is non-empty, as noted in \Cref{thm:ancient_existence}, ancient solutions emanating from \(M_0\) certainly exist. The previous discussion shows that these ancient solutions are precisely the finite dimensional manifold \(\mathcal{M}\). Since the first eigenvalue is simple, we have the following uniqueness result.
+Since \(\lambda_1 < 0\), as noted in \Cref{thm:ancient_existence}, there exist non-static, ancient solutions emanating from \(M_0\). If \(\dim \{u : L u < 0\} > 1\), we won't have uniqueness of such ancient solutions. However, since the first eigenvalue is simple, we have the following uniqueness result.
 
 \begin{thm}
 \label{thm:ancient_meanconvex_uniqueness}
@@ -139,12 +144,38 @@ There exists a unique, mean-convex, ancient solution emanating from \(M_0\). In 
 Mean-Convexity corresponds to positivity of the corresponding eigenfunction which is unique since \(\lambda_1\) is simple, and orthogonality of eigenfunctions implies all other eigenfunctions must change sign.
 \end{proof}
 
+We also have that in certain situations, the symmetries of \(M_0\) are inherited by any ancient solution emanating from it. We have that for some \(\epsilon > 0\), the map
+\[
+\Phi (x, r) \in M_0 \times (-\epsilon, \epsilon) \mapsto \exp_x(r\nu)
+\]
+is a diffeomorphism onto an open neighbourhood of \(M_0\). Let,
+\[
+\Phi^{\ast} \bar{g} = g_r(x) + dr^2
+\]
+denote the induced metric on \(M_0 \times (-\epsilon, \epsilon)\) where \(g_r\) is a smooth, one-parameter family of metrics on \(M_0\). This expression for the right hand side follows from Gauss' lemma. We may also write \(g_r = \Phi_r^{\ast} \bar{g}\) where \(\Phi_r (\cdot) = \Phi(\cdot, r)\).
+
 \begin{thm}
-If \(M_0\) is totally geodesic, then the convex, ancient solution \(M_t\) emenating from \(M_0\) is totally geodesic for all \(t \in (-\infty, T)\).
+Let \(G\) be a Lie group acting on \(M_0\) such that \(g_r\) is invariant under \(G\) for \(r \in (-\epsilon, \epsilon)\). Then any ancient solution emanating from \(M_0\) is invariant under the action of \(G\) whilst it remains within \(\Phi(M_0 \times (-\epsilon, \epsilon)\).
 \end{thm}
 
 \begin{proof}
-The symmetry \(\nabla A \equiv 0\) is preserved.
+Write \((x, g) \in M_0 \times G \mapsto gx \in M_0\) for the action of \(G\) on \(M_0\) and for each \(g \in G\), define \(L_g : x \mapsto gx\). The assumption is that \(L_g^{\ast} g_r = g_r\), and we need to prove that \(u(L_g(x)) = u(x)\) for each \(x \in M_0\) and each \(g \in G\).
+
+From the assumptions, we find that
+\[
+g_r(x) = e^{f(r)} g_0
+\]
+for some smooth function \(f(r)\).
+
+Now it should be relatively straight forward.
+\end{proof}
+
+\begin{cor}
+Suppose the assumptions as in the theorem hold, and in addition that \(G\) acts transitively on \(M_0\). Then any ancient emanating from \(M_0\) is by CMC hypersurfaces. In addition, if \(M_0\) is totally geodesic (umbilic), then any ancient solution \(M_t\) emanating from \(M_0\) is totally geodesic (resp. umbilic) while it remains in \(M_0 \times (-\epsilon, \epsilon)\).
+\end{cor}
+
+\begin{proof}
+
 \end{proof}
 
 \section{The Harnack Inequality and Backwards Convergence}
