@@ -57,7 +57,7 @@ where \(|\cdot|\) is induced by the metric along \(M_t\) pulled back to \(M_0\) 
 
 Note that \(u \equiv 0\) is just \(M_0\). A simple application of the principle of linearized stability recorded in \Cref{thm:ancient_existence} shows that there do exist such ancient normal graph solutions to \eqref{eq:mcf} converging exponential to \(M_0\) as \(t \to - \infty\). This is just a consequence of the fact that in positive Ricci curvature backgrounds, all minimal hypersurfaces are unstable. Moreover, in \Cref{thm:ancient_meanconvex_uniqueness} we show that amongst such ancient solutions, there exists a unique, mean-convex one. Such a solution provides a foliation of \(\bar{M}\) in a neighbourhood of \(M_0\).
 
-The above discussion raises the question of whether every ancient solution must emanate from a closed minimal hypersurface. That is, if \(M_t\) is an ancient solution, does it converge to a minimal hypersurface as \(t \to -\infty\)? By making use of the Harnack inequality, in \Cref{sec:harnack_backwards}, we prove that any ancient, convex solution does indeed converge backwards to a minimal hypersurface. This minimal hypersurface is in fact totally geodesic and any convex, ancient solution is also totally geodeisc and in particular has constant mean curvature. Thus in particular, a totally geodesic, closed hypersurface \(M_0\) exists in \(\bar{M}\) if and only if a convex, ancient solution exists. Moreover, in the case of existence, a neighbourhood of \(M_0\) is foliated by totally geodesic hypersurfaces.
+The above discussion raises the question of whether every ancient solution must emanate from a closed minimal hypersurface. That is, if \(M_t\) is an ancient solution, does it converge to a minimal hypersurface as \(t \to -\infty\)? By making use of the Harnack inequality, in \Cref{sec:backwards}, we prove that any ancient, convex solution does indeed converge backwards to a minimal hypersurface. This minimal hypersurface is in fact totally geodesic and any convex, ancient solution is also totally geodeisc and in particular has constant mean curvature. Thus in particular, a totally geodesic, closed hypersurface \(M_0\) exists in \(\bar{M}\) if and only if a convex, ancient solution exists. Moreover, in the case of existence, a neighbourhood of \(M_0\) is foliated by totally geodesic hypersurfaces.
 
 \section{Linearisation and Stability}
 \label{sec:linearising_linearisation}
@@ -178,8 +178,156 @@ Suppose the assumptions as in the theorem hold, and in addition that \(G\) acts 
 
 \end{proof}
 
-\section{The Harnack Inequality and Backwards Convergence}
-\label{sec:harnack_backwards}
+\section{Backwards Convergence}
+\label{sec:backwards}
+
+In the section, we turn to the question of whether an ancient solutions has a backwards limit. By continuity, if \(M_t\) is an ancient solution converging exponentially fast backwards in \(h^{2,alpha}\) to a smooth, minimal hypersurface \(M_0\), then \(H\) converges smoothly and exponentially fast to \(0\) as \(t-\to\infty\). \Cref{lem:bounded_sff} gives a partial converse for strictly convex, ancient solutions in backgrounds admitting a Harnack inequality.
+
+\begin{lemma}
+\label{lem:bounded_sff}
+Suppose \((\overline{M}, \overline{g})\) satisfies \(\ric(\overline{g}) \geq K_0 \overline{g}\) and \(\overline{\nabla}\overline{\rm} = 0\). Then for any closed, convex, ancient solution \(M_t\) we have the bound,
+\[
+|A|^2 \leq c_0 e^{K_0t}
+\]
+for all \(t \in (-\infty, 1)\) where \(c_0, a > 0\) are constants with \(c_0\) depending only on \(M_{-1}\) and \(a\) depending only on a lower bound \(\inf \{K \in \R : \ric \geq K g \forall x \in \overline{M}\} > 0\).
+\end{lemma}
+
+\begin{proof}
+The Harnack inequality states that,
+\[
+\partial_t H - b^{ij}\nabla_iH\nabla_jH - K_0 H \geq 0.
+\]
+where \(b^{ij} = g^{ik} (\mathcal{W}^{-1})^j_k\) is the metric dual of the inverse Weingarten map. Sending \(t \to -\infty\) and using convexity (which implies \(b^{ij}\) is positive definite, we obtain
+\[
+\partial_t H \geq K_0 H.
+\]
+Integrating both sides of this inequality against $dt$ on the time interval $[t,-1]$ gives
+\[
+H(\cdot,t) \leq H(\cdot,-1) \exp(K_0t).
+\]
+Convexity implies
+\[
+|A| = \sqrt{\kappa_1^2 + \cdots \kappa_n^2} \leq \sqrt{(\kappa_1 + \cdots + \kappa_n)^2} = H \leq c_0\exp(K_0t)
+\]
+for $t\le 1$ where $c_0 = \sup_{x\in M} H(x, -1)$.
+\end{proof}
+
+Whenever we have a bound as in the lemma, we obtain smooth, exponentially fast, backwards convergence to a smooth minimal hypersurface.
+
+\begin{thm}
+\label{thm:backwards_convergence}
+Let \(M_t\) be a mean convex, ancient solution with \(|A| \leq c_0 e^{K_0t}\) for positive constants \(c_0, K_0\). Then \(M_t \to M_0\) smoothly and exponentially fast as \(t \to -\infty\), where \(M_0\) is a smooth, closed, totally geodesic (and hence minimal) hypersurface.
+\end{thm}
+
+\begin{rem}
+The theorem does not require any assumptions on \((\overline{M}, \overline{g})\) other than uniform bounds on \(|\overline{\Rm}|\) and \(|\nabla^m \overline{\Rm}|\). In particular, we do not require \(\overline{\nabla} \overline{\Rm} = 0\) as was required in the previous lemma.
+\end{rem}
+
+\begin{proof}
+By an induction argument similar to \cite{Hamilton:/1995a}, we will show that for every \(m \geq 1\),
+\begin{equation}
+\label{eq:higher_derivative_bounds}
+|\nabla^mA|^2 \leq c_m (\exp(2K_0t) + 1)
+\end{equation}
+for $t\le -1,$ where $c_m$ depends only on $c_0$, $M_{-1}$ and $m$.
+
+Following \cite{Hamilton:/1982}, let \(T \ast S\) denotes some linear combintation of metric contractions of \(S\) and \(T\). As in \cite[3.3 Corollary (i)]{Huisken:/1986} we have \(\partial_t g = -2Hh = A \ast A\) so that \(\partial_t\Gamma_{ij}^k = A\ast\nabla A\) \cite[Section 7]{Huisken:/1984}. As in \cite[Section 13]{Hamilton:/1982}, we then obtain the commutator,
+\[
+[\partial_t, \nabla] T = A \ast \nabla A \ast T,
+\]
+for any tensor \(T\). An induction argument gives,
+\[
+[\partial_t, \nabla^m] T = \sum_{i+j+k=m} \nabla^i A \ast \nabla^j A \ast \nabla^k T.
+\]
+We also have, by induction beginning with \([\nabla, \Delta]T = \Rm \ast \nabla T + \nabla \Rm \ast T\), the commutator,
+\[
+[\nabla^m, \Delta] T = \sum\limits_{i+j=m} \nabla^i \Rm \ast \nabla^j T = \sum\limits_{i+j=m} \nabla^i \overline{\Rm} \ast \nabla^j T + \sum\limits_{i+j+k=m} \nabla^i A \ast \nabla^j A \ast \nabla^k T
+\]
+with the second equality following from the Gauss equation, \(\overline{\Rm} = \Rm + A \ast A\).
+
+Now, according to \cite[3.3 Corollary (i)]{Huisken:/1986},
+\[
+\partial_t A = \Delta A + A \ast A \ast A + A \ast \overline{\Rm} + \overline{\nabla} \overline{\Rm}
+\]
+where \(A \ast \overline{\Rm}\) is a metric contraction of \(A, \overline{\Rm}\) and the unit normal, \(\nu\). By an abuse of notation, the last term is a two tensor on \(M\), obtained from a metric contraction of \(\overline{\nabla} \overline{\Rm}\) and \(\nu\).
+
+Applying the commutators, we obtain,
+\[
+\begin{split}
+\partial_t \nabla^m A =& [\partial_t, \nabla^m] A + \Delta \nabla^m A + [\nabla^m , \Delta] A \\
+& + \sum_{i+j+k=m} \nabla^i A \ast \nabla^j A \ast \nabla^k A + \sum_{i+j=m} \nabla^i \overline{\Rm} \ast \nabla^j A + \nabla^{m+1} \overline{\Rm} \\
+=& \Delta \nabla^m A + \sum_{i+j+k=m} \nabla^i A \ast \nabla^j A \ast \nabla^k A + \sum_{i+j=m} \nabla^i \overline{\Rm} \ast \nabla^j A + \nabla^{m+1} \overline{\Rm}.
+\end{split}
+\]
+
+Then from the evolution of the metric, for any tensor \(T\),
+\[
+(\partial_t - \Delta) |T|^2 = 2g(\partial_t T - \Delta T, T)  + A \ast A \ast T \ast T - 2 |\nabla T|^2.
+\]
+Applied to \(T = \nabla^m A\) yields,
+\begin{equation}
+\label{eq:higher_derivatives_evolution}
+\begin{split}
+\partial_t |\nabla^m A|^2 &= \Delta |\nabla^m A|^2 - 2 |\nabla^{m+1} A|^2 \\
+&+ \left(\sum_{i+j+k=m} \nabla^i A \ast \nabla^j A \ast \nabla^k A + \sum_{i+j=m} \nabla^i \overline{\Rm} \ast \nabla^j A + \nabla^{m+1} \overline{\Rm}\right) \ast \nabla^m A \\
+=& \Delta |\nabla^m A|^2 - 2 |\nabla^{m+1} A|^2 \\
+&+ \left(\sum_{\substack{i+j+k=m \\ i,j,k<m}} \nabla^i A \ast \nabla^j A \ast \nabla^k A + \sum_{\substack{i+j=m \\ j<m}} \nabla^i \overline{\Rm} \ast \nabla^j A + \nabla^{m+1} \overline{\Rm}\right) \ast \nabla^m A \\
+&+ \left(A \ast A + \overline{\Rm}\right) \ast \nabla^m A \ast \nabla^m A.
+\end{split}
+\end{equation}
+
+With our evolution equation in hand, we may finish with an induction: The assumptions of the theorem give the result for \(m=0\), so assume that \eqref{eq:higher_derivative_bounds} holds for all \(k < m\). The second to last line of \eqref{eq:higher_derivatives_evolution}, may then be bounded by
+\[
+\begin{split}
+C((e^{2K_0 t} + 1)^3 + (e^{2K_0t} + 1) + 1) |\nabla^m A| &\leq C |\nabla^m A|^2 + C ((e^{6K_0 t} + 1)^3 + (e^{2K_0t} + 1) + 1)^2 \\
+&\leq C |\nabla^m A|^2 + C e^{2K_0 t} + C
+\end{split}
+\]
+where the constant \(C\) is allowed to change after each inequality, but depends only on \(M_{-1}\) and the bounds for \(|\overline \nabla^k{\Rm}|\), \(0\leq k \leq m\). We also used that \(t \leq -1\), so that \(e^{2\lambda K_0 t} \leq e^{2K_0 t}\) for all \(\lambda \geq 1\). The last line of \eqref{eq:higher_derivatives_evolution} may likewise be bounded by
+\[
+C(e^{2K_0 t} + 1)|\nabla^m A|^2.
+\]
+Thus we have,
+\begin{align*}
+\partial_t |\nabla^{m-1} A|^2 &\leq \Delta |\nabla^{m-1} A|^2 - 2 |\nabla^m A|^2 + C_{m-1}(e^{2K_0t} + 1) |\nabla^{m-1} A|^2 + C_{m-1} e^{2K_0 t} + C_{m-1} \\
+&\leq \Delta |\nabla^{m-1} A|^2 - 2 |\nabla^m A|^2 + C_{m-1} e^{2K_0 t} + C_{m-1} \\
+\intertext{and}
+\partial_t |\nabla^{m} A|^2 &\leq \Delta |\nabla^m A|^2  - |\nabla^{m+1} A|^2 + C_m(e^{2K_0t} + 1) |\nabla^m A|^2 + C_m e^{2K_0 t} + C_m \\
+&\leq \Delta |\nabla^m A|^2 + C_m |\nabla^m A|^2 + C_m e^{2K_0 t} + C_m
+\end{align*}
+where in the last line we used that \(e^{2K_0 t}\) is bounded above for all \(t \leq -1\), and again \(C_{m-1},C_m \geq 0\) depend only on \(M_0\) and the bounds on \(|\overline{\nabla}^k \overline{\Rm}\). In particular, they are independent of \(t\).
+
+Now fix \(s \leq -2\) and consider \(t \in [s, s+1]\) (noting that \(0 \leq t-s \leq 1\)). Thus we obtain for any \(b \geq 0\),
+\begin{align*}
+\partial_t ((t-s)|\nabla^m A|^2 + b|\nabla^{m-1} A|^2) \leq& \Delta((t-s)|\nabla^m A|^2 + b|\nabla^{m-1}A|^2) \\
+&+ (1 - 2b + (t-s)C_m) |\nabla^m A|^2 \\
+& + (bC_{m-1} + (t-s)C_m) e^{2K_0 t} + (bC_{m-1} + C_m) \\
+\leq& \Delta((t-s)|\nabla^m A|^2 + b|\nabla^{m-1}A|^2) \\
+&+ (1 - 2b + C_m) |\nabla^m A|^2 + (bC_{m-1} + C_m) (e^{2K_0 t} + 1) \\
+\leq& \Delta((t-s)|\nabla^m A|^2 + b|\nabla^{m-1}A|^2) + C (e^{2K_0 t} + 1)
+\end{align*}
+upon choosing \(b \geq \tfrac{1}{2}(C_m + 1)\) independently of \(s, t\). The maximum principle now implies that,
+\[
+\begin{split}
+(t-s) |\nabla^m A|^2 \leq& (t-s)|\nabla^m A|^2 + b|\nabla^{m-1} A|^2 \\
+\leq& C\left(\frac{1}{2K_0} e^{2K_o t} + t\right) + \left(bC_{m-1}^2 - \frac{C}{2K_0}\right)e^{2K_0 s} - Cs \\
+\leq& C(e^{2K_o t} + t + e^{2K_0 s} - s)
+\end{split}
+\]
+after enlarging \(b\) if necessary so that \(bC_{m-1}^2 - \tfrac{C}{2K_0} \geq 0\) independently of \(s,t\). Choosing \(t = s + 1\) yields,
+\[
+|\nabla^m A|^2 \leq C (e^{2K_0t} + 1).
+\]
+
+Because of the \(1\) on the right hand side, we cannot immediately conclude the result. Note that this term arises from the term \(\nabla^{m+1} \overline{\Rm} \ast A\) in equation \eqref{eq:higher_derivatives_evolution} originating in the evolutio of \(A\). Nevertheless, to finish, we show that in fact,
+\begin{equation}
+\label{eq:higher_derivatives_decay}
+|\nabla^m A|^2 \leq \tilde{c}_m e^{2K_0 t}.
+\end{equation}
+Smooth convergence to a unique limit \(M_0\) then follows by compactness and monotonicity of mean convex flows. Moreover, \(|A|^2\) and \(|\nabla^m A|^2\) converge uniformly to zero, hence \(M_0\) is minimal.
+
+We prove \eqref{eq:higher_derivatives_decay} by another induction. By assumption, the result is true for \(m=0\) so again, assume it is true for all \(k < m\).
+\end{proof}
 
 \printbibliography
 
