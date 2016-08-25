@@ -127,11 +127,11 @@ As in \cite[Theorem 4.1]{Simonett:/1995} (see also \cite[Theorem 9.2.2]{lunardi2
 has the following properties:
 \begin{enumerate}
 \item For every \(u_0 \in \mathcal{M}\), there exists a unique ancient solution \(u\) such that \(\lim_{t\to-\infty} \|u\| = 0\) and \(u(0) = u_0\),
-\item if \(u\) is an ancient solution such that \(\|u\| \leq R_1\), and \(\partial_t u \not\equiv 0\), then \(u \in \mathcal{M}\),
+\item if \(u\) is an ancient solution such that \(\|u\| \leq R_1\), then \(u \in \mathcal{M}\),
 \item for each \(k \in \N\), there exists \(R_k > 0\) such that \(\Gamma \in C^{k-1,1}\) on \(B_{R_k}(0)\).
 \end{enumerate}
 
-The graph \(\mathcal{M}\) is known as the \emph{unstable manifold}. It is invariant under the flow \eqref{eq:mcf} in the sense that if \(u_0 \in \mathcal{M}\) and \(u(t)\) is the solution of \eqref{eq:mcf} with \(u(0) = u_0\), then \(u(t) \in \mathcal{M}\) provided \(\|u\| \leq R_1\). Thus \(\mathcal{M}\) contains all ancient solutions emanating from \(M_0\); \(\Gamma(\{u : Lu = 0\})\) is comprised of static solutions, while \(\Gamma(\{u : Lu < 0\})\) is comprised of non-static solutions.
+The graph \(\mathcal{M}\) is known as the \emph{center-unstable manifold}. It is invariant under the flow \eqref{eq:mcf} in the sense that if \(u_0 \in \mathcal{M}\) and \(u(t)\) is the solution of \eqref{eq:mcf} with \(u(0) = u_0\), then \(u(t) \in \mathcal{M}\) provided \(\|u\| \leq R_1\). Thus \(\mathcal{M}\) contains all ancient solutions emanating from \(M_0\); \(\Gamma(\{u : Lu = 0\})\) is comprised of static solutions, while \(\Gamma(\{u : Lu < 0\})\) is comprised of non-static solutions.
 
 Since \(\lambda_1 < 0\), as noted in \Cref{thm:ancient_existence}, there exist non-static, ancient solutions emanating from \(M_0\). If \(\dim \{u : L u < 0\} > 1\), we won't have uniqueness of such ancient solutions. However, since the first eigenvalue is simple, we have the following uniqueness result.
 
@@ -155,7 +155,7 @@ is a diffeomorphism onto an open neighbourhood of \(M_0\). Let,
 denote the induced metric on \(M_0 \times (-\epsilon, \epsilon)\) where \(g_r\) is a smooth, one-parameter family of metrics on \(M_0\). This expression for the right hand side follows from Gauss' lemma. We may also write \(g_r = \Phi_r^{\ast} \bar{g}\) where \(\Phi_r (\cdot) = \Phi(\cdot, r)\).
 
 \begin{thm}
-Let \(G\) be a Lie group acting on \(M_0\) such that \(g_r\) is invariant under \(G\) for \(r \in (-\epsilon, \epsilon)\). Then any ancient solution emanating from \(M_0\) is invariant under the action of \(G\) whilst it remains within \(\Phi(M_0 \times (-\epsilon, \epsilon)\).
+Let \(G\) be a Lie group acting on \(M_0\) such that \(g_r\) is invariant under \(G\) for \(r \in (-\epsilon, \epsilon)\). Then any ancient solution emanating from \(M_0\) is invariant under the action of \(G\) whilst it remains within \(\Phi(M_0 \times (-\epsilon, \epsilon))\).
 \end{thm}
 
 \begin{proof}
