@@ -181,7 +181,7 @@ Suppose the assumptions as in the theorem hold, and in addition that \(G\) acts 
 \section{Backwards Convergence}
 \label{sec:backwards}
 
-In the section, we turn to the question of whether an ancient solutions has a backwards limit. By continuity, if \(M_t\) is an ancient solution converging exponentially fast backwards in \(h^{2,alpha}\) to a smooth, minimal hypersurface \(M_0\), then \(H\) converges smoothly and exponentially fast to \(0\) as \(t-\to\infty\). \Cref{lem:bounded_sff} gives a partial converse for strictly convex, ancient solutions in backgrounds admitting a Harnack inequality.
+In the section, we turn to the question of whether an ancient solutions has a backwards limit. By continuity, if \(M_t\) is an ancient solution converging exponentially fast backwards in \(h^{2,\alpha}\) to a smooth, minimal hypersurface \(M_0\), then \(H\) converges smoothly and exponentially fast to \(0\) as \(t\to-\infty\). \Cref{lem:bounded_sff} gives a partial converse for strictly convex, ancient solutions in backgrounds admitting a Harnack inequality.
 
 \begin{lemma}
 \label{lem:bounded_sff}
@@ -223,14 +223,18 @@ Let \(M_t\) be a mean convex, ancient solution with \(|A| \leq c_0 e^{K_0t}\) fo
 The theorem does not require any assumptions on \((\overline{M}, \overline{g})\) other than uniform bounds on \(|\overline{\Rm}|\) and \(|\nabla^m \overline{\Rm}|\). In particular, we do not require \(\overline{\nabla} \overline{\Rm} = 0\) as was required in the previous lemma.
 \end{rem}
 
-\begin{proof}
-By an induction argument similar to \cite{Hamilton:/1995a}, we will show that for every \(m \geq 1\),
+First we need a lemma. By an induction argument similar to \cite[Section 13]{Hamilton:/1982}, we obtain bounds on higher derivatives \(|\nabla^m A|\).
+
+\begin{lemma}
+Let \(M_t\) be an ancient solution with \(|A| \leq c_0 e^{K_0t}\) for positive constants \(c_0, K_0\). Then there exist constants, \(c_m \geq 0\) such that,
 \begin{equation}
 \label{eq:higher_derivative_bounds}
-|\nabla^mA|^2 \leq c_m (\exp(2K_0t) + 1)
+|\nabla^mA|^2 \leq c_m
 \end{equation}
-for $t\le -1,$ where $c_m$ depends only on $c_0$, $M_{-1}$ and $m$.
+for $t\le -1,$ where $c_m$ depends only on $c_0,K_0$, $M_{-1}$, $m$ and the bounds for \(|\overline{\Rm}|\) and \(|\nabla^m \overline{\Rm}|\). 
+\end{lemma}
 
+\begin{proof}
 Following \cite{Hamilton:/1982}, let \(T \ast S\) denotes some linear combintation of metric contractions of \(S\) and \(T\). As in \cite[3.3 Corollary (i)]{Huisken:/1986} we have \(\partial_t g = -2Hh = A \ast A\) so that \(\partial_t\Gamma_{ij}^k = A\ast\nabla A\) \cite[Section 7]{Huisken:/1984}. As in \cite[Section 13]{Hamilton:/1982}, we then obtain the commutator,
 \[
 [\partial_t, \nabla] T = A \ast \nabla A \ast T,
@@ -316,10 +320,19 @@ upon choosing \(b \geq \tfrac{1}{2}(C_m + 1)\) independently of \(s, t\). The ma
 \]
 after enlarging \(b\) if necessary so that \(bC_{m-1}^2 - \tfrac{C}{2K_0} \geq 0\) independently of \(s,t\). Choosing \(t = s + 1\) yields,
 \[
-|\nabla^m A|^2 \leq C (e^{2K_0t} + 1).
+|\nabla^m A|^2 \leq C (e^{2K_0t} + 1) \leq C(e^{-2K_0} + 1)
 \]
+for all \(t \leq -1\).
+\end{proof}
 
-Because of the \(1\) on the right hand side, we cannot immediately conclude the result. Note that this term arises from the term \(\nabla^{m+1} \overline{\Rm} \ast A\) in equation \eqref{eq:higher_derivatives_evolution} originating in the evolution of \(A\).
+\begin{proof}[Proof of \Cref{thm:backwards_convergence}]
+With the estimates \eqref{eq:higher_derivative_bounds} established, we apply \cite[12.7 Corollary]{Hamilton:/1982} which gives a universal constant \(C = C(n, m+1)\) such that
+\[
+\begin{split}
+\|\nabla^m A\|_{L^2}^2 &\leq C \|\nabla^{m+1} A\|_{L^2}^{\tfrac{2m}{m+1}} \|A\|_{L^2}^{\tfrac{2}{m+1}} \leq C c_m^{\tfrac{2m}{m+1}} c_0^{\tfrac{2}{m+1}} \operatorname{Vol}(M_t)^{\tfrac{m}{(m+1)^2}} e^{\tfrac{4K_0}{m+1}t} \\
+&\leq C_m \operatorname{Vol}(M_t)^{\tfrac{m}{(m+1)^2}} e^{a_m t}.
+\end{split}
+\]
 \end{proof}
 
 \printbibliography
