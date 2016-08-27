@@ -331,20 +331,20 @@ With the estimates \eqref{eq:higher_derivative_bounds} established, we apply \ci
 \begin{equation}
 \label{eq:interpolation}
 \begin{split}
-\|\nabla^m A\|_{L^2}^2 &\leq C \|\nabla^{m+1} A\|_{L^2}^{\tfrac{2m}{m+1}} \|A\|_{L^2}^{\tfrac{2}{m+1}} \leq C c_m^{\tfrac{2m}{m+1}} c_0^{\tfrac{2}{m+1}} \operatorname{Vol}(M_t)^{\tfrac{m}{(m+1)^2}} e^{\tfrac{4K_0}{m+1}t} \\
-&\leq C_m \operatorname{Vol}(M_t)^{\tfrac{m}{(m+1)^2}} e^{a_m t}.
+\|\nabla^m A\|_{L^2}^2 &\leq C \|\nabla^{m+1} A\|_{L^2}^{\tfrac{2m}{m+1}} \|A\|_{L^2}^{\tfrac{2}{m+1}} \leq C c_m^{\tfrac{2m}{m+1}} c_0^{\tfrac{2}{m+1}} \mathcal{A}(M_t)^{\tfrac{m}{(m+1)^2}} e^{\tfrac{4K_0}{m+1}t} \\
+&\leq C_m \mathcal{A}(M_t)^{\tfrac{m}{(m+1)^2}} e^{a_m t}.
 \end{split}
 \end{equation}
-Now we estimate the volume, \(V_t = \operatorname{Vol}(M_t) = \int_M \mu_t\). We have the evolution,
+Now we estimate the area, \(\mathcal{A}_t = \int_M \mu_t\) of \(M_t\) noting that in a compact manifold, there is no upper bound on the possible area of closed hypersurfaces. We have the evolution,
 \[
-\partial_t V_t = -\int H^2 \mu \geq -\frac{c_0^2}{n} V_t e^{2K_0 t}
+\partial_t \mathcal{A}_t = -\int H^2 \mu \geq -\frac{c_0^2}{n} \mathcal{A}_t e^{2K_0 t}
 \]
 since \(H^2 \leq \tfrac{1}{n} |A|^2 \leq c_0^2 e^{2K_0t}\). Then integrating over \([t, -1]\) gives
 \begin{equation}
-\label{eq:volume_bound}
-V_t \leq C_1 \exp(-C e^{2K_0t}) \leq C_1.
+\label{eq:area_bound}
+\mathcal{A}_t \leq C_1 \exp(-C e^{2K_0t}) \leq C_1.
 \end{equation}
-Combining equations \eqref{eq:interpolation} and \eqref{eq:volume_bound} we get,
+Combining equations \eqref{eq:interpolation} and \eqref{eq:area_bound} we get,
 \[
 \|\nabla^m A\|_{L^2}^2 \leq C_m e^{a_m t}.
 \]
