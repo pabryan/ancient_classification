@@ -32,9 +32,9 @@ F : M \times (-\infty, T) \to \bar{M}
 with \(M\) a closed manifold, and satisfying
 \begin{equation}
 \label{eq:mcf}
-F_{\ast} \partial_t = \vec{H} = -H\nu
+F_{\ast} \partial_t = -f(\weingarten) \nu
 \end{equation}
-where \(\vec{H}\) denotes the Mean Curvature Vector Field, \(\nu\) is a choice of smooth, unit, normal vector field and \(H\) is the Mean Curvature with respect to \(\nu\): \(H = \Tr \weingarten\) with \(\weingarten (X) = -F_{\ast}^{-1} \bar{\nabla}_{F_{\ast} X} \nu\). Note also that we allow \(T = \infty\) so that any closed, minimal surface is a (static), ancient solution.
+where \(\nu\) is a choice of smooth, unit, normal vector field, \(\weingarten (X) = -F_{\ast}^{-1} \bar{\nabla}_{F_{\ast} X} \nu\) is the Weingarten map \(\weingarten \in C^{\infty}(T^{\ast}M \otimes TM)\) and \(f\) is a so-called, \emph{curvature function}. Note also that we allow \(T = \infty\) so that in particular, any closed, minimal surface is a (static), ancient solution.
 
 Let us write \(M_t = F_t(M)\), \(F_t (\cdot) = F(\cdot, t)\) and \(g = g_t = F^{\ast} \bar{g}\). We say that \(M_t\) is convex if for a choice of normal \(\nu\) we have \(A_t>0\) where
 \[
@@ -59,21 +59,57 @@ Note that \(u \equiv 0\) is just \(M_0\). A simple application of the principle 
 
 The above discussion raises the question of whether every ancient solution must emanate from a closed minimal hypersurface. That is, if \(M_t\) is an ancient solution, does it converge to a minimal hypersurface as \(t \to -\infty\)? By making use of the Harnack inequality, in \Cref{sec:backwards}, we prove that any ancient, convex solution does indeed converge backwards to a minimal hypersurface. This minimal hypersurface is in fact totally geodesic and any convex, ancient solution is also totally geodesic and in particular has constant mean curvature. Thus in particular, a totally geodesic, closed hypersurface \(M_0\) exists in \(\bar{M}\) if and only if a convex, ancient solution exists. Moreover, in the case of existence, a neighbourhood of \(M_0\) is foliated by totally geodesic hypersurfaces.
 
+\section{Notation and Preliminaries}
+\label{sec:notation}
+
+The speed function, \(f: \Gamma(T^{\ast}M \otimes TM) \to C^{\infty}(M)\) may be thought of as a function \(f : \Gamma(T^{\ast} M \otimes T^{\ast}M) \times \Gamma(T^{\ast} \odot T^{\ast}M)_+ \to C^{\infty}(M)\) via
+\[
+f(h, g) = f(\tr_g h)
+\]
+where \(\Gamma(T^{\ast} \odot T^{\ast}M)_+\) denotes the fibre bundle of positive-definite, symmetric bilinear forms. Writing
+\[
+\dot{f}^{ij} = \partial_{h_{ij}} f = g^{ik} \partial_{h^j_k} f
+\]
+we obtain a positive definite (from the parabolicity condition), symmetric bi-linear form on \(T^{\ast}M\),
+\[
+B_{\dot{f}} (\alpha, \beta) = f^{ij} \alpha_i \beta_j
+\]
+where \(\alpha = \alpha_i dx^i, \beta = \beta_i dx^i\). We can use \(B_{\dot{f}}\) to define musical isomorphisms and so raise and lower indices. In particular, denote by \(\ric_{\dot{f}}\) the trace of \(\Rm\) with respect to \(B_{\dot{f}}\),
+\[
+(\ric_{\dot{f}})_{ij} = \dot{f}^{kl} \riem_{kilj}.
+\]
+We also have associated norms
+\[
+|\alpha|_{\dot{f}}^2 = B_{\dot{f}}(\alpha, \alpha)
+\]
+which induces, in particular, a norm on endomorphisms \(T \in T^{\ast}M \otimes TM\)
+\[
+|T|_{\dot{f}}^2 = \dot{f}^{ij} g_{il} T^l_k T^k_j.
+\]
+
+Let us also define the operator
+\[
+\Box u = \Box_{\dot{f}} u = \dot{f}^{ij} \nabla^2_{ij} u.
+\]
+
 \section{Linearisation and Stability}
 \label{sec:linearising_linearisation}
 
 In this section we consider the linearisation of the flow \eqref{eq:graph_mcf} of normal graphs \(u \in X\) over a closed, minimal hypersurface \(M_0\). Arguing as in \cite[Lemmas 3.1, 3,2, 3.5]{Harltey:/2016} we obtain the linearisation is the Schr\"odinger operator,
 \begin{equation}
 \label{eq:linearisation}
--L u = \Delta u + \left(\overline{\ric}(\nu_0) + |\mathcal{W}|^2\right) u
+L u = L_{\dot{F}} u = \Box u + \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\weingarten|_{\dot{F}}^2\right) u
 \end{equation}
-where derivatives and norms are computed with respect to the metric \(g_0 = F_0^{\ast} \bar{g}\) induced on \(M_0 = X_0(M)\), and Levi-Civita connection \(\nabla_0\), \(\nu_0\) denotes a smooth choice of unit normal along \(M_0\), and \(\bar{\ric}\) denotes the Ricci curvature of the ambient metric \(\bar{g}\).
-
-For convenience, let us set
+where derivatives and norms are computed with respect to the metric \(g_0 = X_0^{\ast} \bar{g}\) induced on \(M_0 = X_0(M)\) with Levi-Civita connection \(\nabla_0\). For convenience, let us set
 \[
-V = -\left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\mathcal{W}|_{\dot{F}}^2\right)
+V = \left(\overline{\ric}_{\dot{F}}(\nu_0, \nu_0) + |\weingarten|_{\dot{F}}^2\right)
 \]
-for the potential so that,
+for the potential.
+
+\subsection{The Mean Curvature Flow}
+\label{subsec:linearisation_mcf}
+
+Let us begin with the case of the Mean Curvature Flow where life is simple, like a lazy Sunday afternoon on the river. In this case, \(B_{\dot{f}} = g^{-1}\) is the dual metric, and hence
 \[
 L u = -\Delta u + V u.
 \]
