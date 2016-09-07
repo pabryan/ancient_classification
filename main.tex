@@ -127,9 +127,40 @@ A particularly important feature is that $L u = 0$ is the Euler-Lagrange equatio
 \[
 \lambda_1 = \inf \left\{I(u) : \int_{M_0} u = 1\right\}
 \]
-is simple with corresponding eigenfunction having a sign, which we take to be positive: \(Lu = \lambda_1 u \Rightarrow u > 0\). We write \(\lambda_1 < \lambda_2 \leq \lambda_3 \leq \cdots\) for the eigenvalues noting that \(\lambda_1 < 0\) and \(\sigma = \sigma(L)\) for the spectrum.
+is simple (the corresponding eigenspace is one-dimensional) with corresponding eigenfunction having a sign, which we take to be positive: \(Lu = \lambda_1 u \Rightarrow u > 0\). We write \(\lambda_1 < \lambda_2 \leq \lambda_3 \leq \cdots\) for the eigenvalues noting that \(\lambda_1 < 0\) and \(\sigma = \sigma(L)\) for the spectrum.
 
 The index form is of course, precisely the index form for the area functional of minimal surfaces \(M_0\). In the particular case \(V < 0\) on \(M_0\) (for example if \(\ric > 0\)), by choosing \(u \equiv u_0\) is constant, we obtain the existence of a function \(u\) with \(I(u) < 0\). Equivalently, \(M_0\) has positive Morse index (there exists a negative eigenvalue \(I(u) = \lambda u\) with \(\lambda < 0\) for some \(u\)) if and only if \(M_0\) is unstable. In the case of positive Ricci, this is the well known result that all minimal surfaces are unstable.
+
+\subsection{The Self-Adjoint Condition}
+\label{subsec:linearisation_selfadjoint}
+
+Suppose the operator,
+\[
+L u = df \cdot \nabla^2 u + V u
+\]
+is uniformly elliptic, and \(L_2\) self-adjoint so that defining
+\[
+B(u, v) = \int_{M_0} v Lu \mu,
+\]
+we have \(B(u, v) = B(v, u)\). The standard argument \cite[Section 8.12]{GilbargTrudinger:/2001} shows that, just as for the mean curvature flow, \(L\) the spectrum \(\sigma(L)\) consists precisely of a countable set of eigenvalues, accumulating only at infinity and that again \(\lambda_1\) is simple. In other words, such operators behave essentially the same as the mean curvature flow.
+
+A general operator,
+\[
+L u = df \cdot \nabla^2 u + V u
+\]
+will not be \(L_2\) self-adjoint. However, assuming uniform ellipticity of \(df\) we do have a compact solution operator \(A\) defined by,
+\[
+A f = u \text{ where } Lu = f.
+\]
+In other words, \(A\) is an inverse of \(L\) and as compactness of \(A\) ensures that it has countable spectrum, \(\sigma(L)\) accumulating only possibly at \(0\). Therefore, \(L\) has discrete spectrum. Moreover, \cite{protterweinberger:/1966} guarantees the existence of a real, principle eigenvalue \(\lambda_1\) such that,
+\[
+\operatorname{Re} (\lambda) \leq \lambda_1
+\]
+for all \(\lambda \in \sigma(L)\).
+
+\begin{rem}
+It does not necessarily follow that \(\lambda_1\) is simple, that is, the eigenspace corresponding to \(\lambda_1\) is one-dimensional. In order to obtain such a result, one typically uses the strong maximum principle to show that \(A f > 0\) whenever \(f \geq 0, f \not\equiv 0\) as in the Krien-Rutman theorem \cite{kreinrutman-en:1950, kreinrutman:1948}. However, this would require a negative potential \(V \leq 0\) which corresponds to a stable, stationary hypersurface which, in turn does not admit any non-trivial ancient solutions hence is of no interest here. Note however, that in the self-adjoint case, the variational characterisation of \(\lambda_1\) implies that if \(u\) is an eigenfunction for \(\lambda_1\), then so too is \(|u|\). But then, as described in \cite[Section 8.12]{GilbargTrudinger:/2001}, the Harnack inequality (which, unlike the strong maximum principle, holds without any condition on the sign of the potential) ensures that \(\|u\| > 0\) and orthogonality of eigenfunctions then shows that \(\lambda_1\) is simple.
+\end{rem}
 
 \subsection{Elementary Symmetric Polynomials}
 \label{subsec:linearisation_elementarysymmetric}
