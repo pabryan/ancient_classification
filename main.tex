@@ -131,6 +131,51 @@ is simple with corresponding eigenfunction having a sign, which we take to be po
 
 The index form is of course, precisely the index form for the area functional of minimal surfaces \(M_0\). In the particular case \(V < 0\) on \(M_0\) (for example if \(\ric > 0\)), by choosing \(u \equiv u_0\) is constant, we obtain the existence of a function \(u\) with \(I(u) < 0\). Equivalently, \(M_0\) has positive Morse index (there exists a negative eigenvalue \(I(u) = \lambda u\) with \(\lambda < 0\) for some \(u\)) if and only if \(M_0\) is unstable. In the case of positive Ricci, this is the well known result that all minimal surfaces are unstable.
 
+\subsection{Elementary Symmetric Polynomials}
+\label{subsec:linearisation_elementarysymmetric}
+
+Consider, the elementary symmetric polynomials \(f(\weingarten) = \sigma_k(\kappa)\) where \(\kappa = (\kappa_1, \cdots, \kappa_n)\) are the eigenvalues of \(\weingarten\). Fixed points for the flow are then the closed hypersurfaces, \(M_0\) such that \(\sigma_k \equiv 0\) on \(M_0\) - so called \(k\)-minimal surfaces \cite{}. The case \(k = 1\) is the mean curvature treated above where we make use of the fact that \(d\sigma_1 = d\kappa^1 + \cdots + d\kappa^n\) induces the uniformly elliptic operator \(\Delta\), and that \(\Delta\) is \(L_2\) self-adjoint.
+
+For each \(k \geq 1\), \(\sigma_k\) induces an \(L^2\) self-adjoint operator:
+
+\textbf{details}
+
+However, for \(k \geq 2\), \(d\sigma_k\) may have negative eigenvalues and hence will not, in general be elliptic on a \(k\)-minimal surface \(M_0\). We have the relation,
+\[
+d\sigma_k = \sigma_{k-1|1} d\kappa^1 + \cdots \sigma_{k-1|n} d\kappa^n
+\]
+where \(\sigma_{k-1|j}\) denotes the \((k-1)\)-th elementary symmetric polynomial in the variables \((\kappa_1, \cdots, \kappa_n)\) with \(\kappa_j\) removed. Thus for example, if \(M_0\) is a minimal surface with a non-umbillic point, say \(\kappa_1 = -1, \kappa_2 = 1\), then
+\[
+d\sigma_2 = d\kappa^1 - d\kappa^2
+\]
+which has \(d\sigma_2 (\partial_{\kappa^2} = 1\) and hence is not elliptic.
+
+On the other hand, if \(M_0\) were (weakly) convex (i.e. \(\kappa_i \geq 0\), \(1 \leq i \leq n\)), then \(d\sigma_k \geq 0\) for each \(k\) and we have an elliptic operator. But of course, if \(M_0\) is \(k\)-minimal and convex, then we must have \(\kappa_1 = \cdots = \kappa_n = 0\) we pay the price that \(d\sigma_k \equiv 0\) which is degenerate in the worst possible sense.
+
+It's also possible, a-priori that sound middle ground exists, that \(\sigma_k \equiv 0\) along \(M_0\) and \(d\sigma_k \geq 0\). For example consider a cone \((r \cos \theta, r \sin\theta, r)\), \(\theta \in \S^1, r > 0\) embedded in \(\R^3\) so that \(\kappa_1 \equiv 0\) and \(\kappa_2 = \tfrac{1}{\sqrt{2} r}\). Then \(\sigma_2 \equiv 0\) and
+\[
+d\sigma_2 = \frac{1}{\sqrt{2} r} d\theta \geq 0,
+\]
+with null direction \(\partial_r\). In this case, we obtain a degenerate elliptic operator.
+
+In summary, for \(f = \sigma_k\), \(k \geq 2\) to obtain analogous results as for \(\sigma_1\) we would need to linearise about a \(k\)-minimal hypersurface \(M_0\) satisfying \(d\sigma_k > 0\) which is quite restrictive. We absolutely require some form of ellipticity (e.g. to guarantee existence/uniquess) and offer three possible approaches to weaken the uniform ellipticity requirement.
+
+\begin{enumerate}
+\item Linear regularisation: Let \(M_0\) be \(k\)-minimal and with \(d\sigma_k \geq 0\). For \(\epsilon > 0\), define \(f_{\epsilon} = \sigma_k + \epsilon H\).
+\item Restriction of domain: Let \(M_0\) be \(k\)-minimal with no restriction on \(d\sigma_k\). Define \(X\) to be the closure with respect to the \holder{} norm, \(\|\cdot\|_{2,\alpha}\) of \(\{u \in C^2(M_0) : \lambda(\nabla^2 u) \in \bar{\Gamma}_k\}\) \(\lambda(\nabla^2 u)\) denotes the eigenvalues of the metric contraction \(\Tr_g \nabla^2 u \in C^{\infty}(T^1_1 M_0)\) and where \(\Gamma_k\) is the Garding cone,
+\[
+\Gamma_k = \{\kappa = (\kappa_1, \cdots, \kappa_n) \in \R^n : \sigma_i(\kappa) > 0 \forall 1 \leq i \leq k\}
+\]
+and \(X\) consists of the so-called, \(k\)-admissible functions \cite[Section 2]{wang:/2009}.
+\item Reflection regularisation: Let \(M_0\) be \(k\)-minimal with no restriction on \(d\sigma_k\). Define \(f = \tilde{\sigma}_k\) where,
+\[
+\tilde{\sigma}_k (\kappa_1, \cdots, \kappa_n) = \sigma_k(|\kappa_1|, \cdots, |\kappa_n|).
+\]
+Now \(\tilde{\sigma}_k\) is degenerate elliptic, but non-smooth. To deal with the lack of regularity we use smooth approximating speeds, \(f_{\epsilon}\) as in \cite{andrewsetal:/2014}, which are smooth and degenerate elliptic.
+\end{enumerate}
+
+Each of the possilities will be desribed more generally in the sections to follow.
+
 \subsection{Existence and Uniqueness of Ancient Solutions Near Closed Minimal Surfaces}
 \label{subsec:linearisation_existence}
 
