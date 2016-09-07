@@ -293,6 +293,33 @@ Suppose the assumptions as in the theorem hold, and in addition that \(G\) acts 
 
 \end{proof}
 
+\section{Regularisation}
+\subsection{Degenerate Speeds via Linear Regularisation}
+\label{subsec:linearisation_linearregularisation}
+
+More generally, for a curvature function \(f\), we seek a closed hypersurface \(M_0\) such that \(f \equiv 0\) along \(M_0\) and \(df \geq 0\). Of course, this is quite restrictive and generally there will be no such \(M_0\), as for example in the case of \(\sigma_k\) described in the previous section. The case of the mean curvature flow is particularly special because \(df = g^{-1}\) is uniformly elliptic along any \(M_0\) and the restrictions on \(M_0\) are much more relaxed, only requiring that \(M_0\) is minimal.
+
+For the moment, however, let us suppose such an \(M_0\) does in fact exist, and analyze the spectrum. Thus we assume that \(f \equiv 0\) and \(df \geq 0\) along \(M_0\). First we have to deal with the fact that \(df\) may have null directions somewhere. Since we are dealing with linear stability, we simply add a small, first-order perturbation. Define,
+\[
+f_{\epsilon} = f + \epsilon \Tr
+\]
+for \(\epsilon > 0\). Then \(df_{\epsilon}\) induces a uniformly elliptic operator \(L_{\epsilon}\) to which the results of the previous section apply. In particular, ancient solutions exist for each \(\epsilon\), and if \(df\) is self-adjoint, so too is \(df_{\epsilon}\) with simple, principle eigenvalue.
+
+\textbf{Speculation here}
+
+Now, linear perturbation theory \cite{kato} implies continuous dependence on the spectrum with respect to the parameter \(\epsilon\) and this allows us to analyze the center-unstable manifolds \(\mathcal{M}_{\epsilon}\), and passing to the limit \(\epsilon \to 0\), construct the appropriate center-unstable manifold, along with ancient solutions for the original operator \(L\).
+
+\subsection{Restriction of Domain}
+\label{subsec:linearisation_restriction}
+
+\subsection{Reflection Regularisation}
+\label{subsec:linearisation_reflectionregularisation}
+
+\subsection{Singular Speeds}
+\label{subsec:linearisation_singular}
+
+
+
 \section{Backwards Convergence}
 \label{sec:backwards}
 
